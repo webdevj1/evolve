@@ -12,4 +12,6 @@ router.get('/', function(req, res, next) {
   res.json(allChamps)
 });
 
+
+
 module.exports = router;

@@ -6,7 +6,11 @@ let src = 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/';
 
 class App extends Component {
   
-  state = {champs: {}};
+  state = {
+    champs: {},
+    topLane: [],
+    
+  };
 
   componentDidMount(){
     axios.get('http://localhost:8000', {method: 'cors'})
