@@ -5,18 +5,15 @@ import axios from 'axios';
 let src = 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/';
 
 class App extends Component {
+  
   state = {champs: {}};
+
   componentDidMount(){
     axios.get('http://localhost:8000', {method: 'cors'})
-    .then(res=>{
-      console.log(res)
-      this.setState({champs: res.data.data})
-  })
+    .then(res=>{this.setState({champs: res.data.data})})
     .catch(err=>console.log(err))
-
   }
   render() {
-    console.log(Object.keys(this.state.champs))
     return (
       <div className="App">
         <header className="App-header">
@@ -31,7 +28,7 @@ class App extends Component {
           <div>
              <br/>
             <p>{champ}</p>
-            <img style={{borderRadius: '50%'}} src={src+champ+'.png'} />
+            <img style={{borderRadius: '50%'}} src={`${src}${champ}.png`} />
           </div>
           
         ))}
