@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
-import axios from 'axios';
-import {Link, Route, Switch} from 'react-router-dom';
-import HI from './simulator/sim.js';
+// import axios from 'axios';
+// import {Link, Route, Switch} from 'react-router-dom';
+import Sim from './simulator/sim.js';
 import './simulator/sim.css';
-let src = 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/';
+// let src = 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/';
 
 
 class App extends Component {
@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <HI />
+        <Sim />
       </div>
     );
   }
