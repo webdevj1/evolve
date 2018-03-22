@@ -1,0 +1,47 @@
+#simulator{
+    position: absolute;
+    left: 15%;
+}
+.info{
+    left: 0%
+}
+
+#champs{
+    border: 5px solid black;
+    width: 500px;
+    height: 300px;
+    float: left;
+    overflow: scroll;
+}
+.choose{
+    border-radius: 50%;
+    padding: 2px;
+    width: 70px;
+}
+.choices{
+    /* border: 5px solid blue; */
+    width: 200px;
+    height: 300px;
+    float: left;
+}
+
+.champ-choice{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    vertical-align: top;
+}
+
+.goodWith{
+    width: 100px;
+}
+
+.counter{
+    position: relative;
+    float: right;
+    width: 50px;
+}
+
+p{
+    font-size: 10px
+}

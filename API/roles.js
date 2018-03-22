@@ -30,9 +30,19 @@ let bottomLane = function(){
     return bottom;
 }();
 
+let jungleLane = function(){
+    let jungle = [];
+    for(let key in champs.data){
+        if(champs.data[key].tags.includes('Assassin') || champs.data[key].tags.includes('Tank') || champs.data[key].tags.includes('Fighter')){
+            jungle.push(champs.data[key].id)
+        }
+    }
+    return jungle;
+}();
+
 module.exports = {
     topLane: topLane,
     midLane: midLane,
-    bottomLane: bottomLane
-
-}
+    bottomLane: bottomLane,
+    jungleLane: jungleLane
+};
