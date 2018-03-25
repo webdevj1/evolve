@@ -28,11 +28,25 @@ class Hi extends Component{
         e.preventDefault();
     }
 
+    handleRoles = e =>{
+        localStorage.setItem('role', e.target.name)
+        axios.get('http://localhost:8000/roles')
+        .then(res=>{
+            this.setState({champs: res.data[localStorage.getItem('role')]});
+        });
+    }
+
     render(){
         const {champs} = this.state;
         return(
             <div>
                 <h1>Pick Your Champion!</h1>
+                <img onClick={this.handleRoles} name="fighter" className='roles' src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7b/Fighter_Large.png/revision/latest/scale-to-width-down/354?cb=20161211222158" />
+                <img onClick={this.handleRoles} name="tank" className='roles' src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ee/%C4%90%E1%BB%A1_%C4%91%C3%B2n_L%E1%BB%9Bn.png/revision/latest?cb=20160317142630&path-prefix=vi" />
+                <img onClick={this.handleRoles} name="mage" className='roles' src="https://rankedboost.com/wp-content/plugins/league/assets/roles/Mage.png" />
+                <img onClick={this.handleRoles} name="assassin" className='roles' src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e5/Assassin_Role.png/revision/latest?cb=20141008223656&path-prefix=es" />
+                <img onClick={this.handleRoles} name="support" className='roles' src="http://vignette1.wikia.nocookie.net/suggestion/images/8/89/Enchanter_Large.png" />
+                <img onClick={this.handleRoles} name="marksman" className='roles' src='https://rankedboost.com/wp-content/plugins/league/assets/roles/Marksman.png' />
                 <div id="simulator">
                     <div className="choices" >
                         <div className="goodWith">

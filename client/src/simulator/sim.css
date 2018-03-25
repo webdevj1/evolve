@@ -18,6 +18,9 @@
     padding: 2px;
     width: 70px;
 }
+.choose:hover{
+    cursor: pointer;
+}
 .choices{
     /* border: 5px solid blue; */
     width: 200px;
@@ -44,4 +47,11 @@
 
 p{
     font-size: 10px
+}
+.roles{
+    width: 40px;
+    height: 40px;
+}
+.roles:hover{
+    cursor: pointer;
 }
