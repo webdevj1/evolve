@@ -53,18 +53,6 @@ class Hi extends Component{
                             <div className="info">    
                                 <p><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />{''}</p>
                             </div>
-                            <div className="info">
-                                <p><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />{''}</p>
-                            </div>
-                            <div className="info">    
-                                <p><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />{''}</p>
-                            </div>
-                            <div className="info">    
-                                <p><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />{''}</p>
-                            </div>
-                            <div className="info">    
-                                <p><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />{''}</p>
-                            </div>
                         </div>
                     </div>
                     <div id="champs">
@@ -74,10 +62,6 @@ class Hi extends Component{
                     </div>
                     <div className="choices">
                         <div className="counter">
-                            <img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />
-                            <img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />
-                            <img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />
-                            <img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />
                             <img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />
                         </div>
                     </div>
