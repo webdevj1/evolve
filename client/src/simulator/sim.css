@@ -1,6 +1,8 @@
 #simulator{
-    position: absolute;
-    left: 15%;
+    display: flex
+}
+p{
+    color: #efd;
 }
 .info{
     left: 0%
@@ -10,8 +12,9 @@
     border: 5px solid black;
     width: 500px;
     height: 300px;
-    float: left;
+    /* float: left; */
     overflow: scroll;
+    order: 0
 }
 .choose{
     /* border-radius: 50%; */
@@ -25,13 +28,17 @@
     /* border: 5px solid blue; */
     width: 200px;
     height: 300px;
-    float: left;
+    order: 0;
+    /* float: left; */
 }
 .champ-choice{
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     vertical-align: top;
+    -moz-box-shadow: 0 0 5px #cb8;
+    -webkit-box-shadow: 0 0 5px #cb8;
+    box-shadow: 0px 0px 5px #cb8;
 }
 
 .goodWith{
@@ -40,7 +47,7 @@
 
 .counter{
     position: relative;
-    float: right;
+    /* float: right; */
     width: 50px;
 }
 

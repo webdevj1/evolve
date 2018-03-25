@@ -4,7 +4,10 @@ import axios from 'axios';
 class Hi extends Component{
     constructor(){
         super();
-        this.state = {champs:[]};
+        this.state = {
+            champsData: {},
+            champs:[]
+        };
     }
 
     componentDidMount(){
@@ -51,7 +54,7 @@ class Hi extends Component{
                     <div className="choices" >
                         <div className="goodWith">
                             <div className="info">    
-                                <p><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />{''}</p>
+                                <p style={{fontSize: '20px'}}><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png' alt='champ' className='champ-choice' />{''}</p>
                             </div>
                         </div>
                     </div>
@@ -62,10 +65,11 @@ class Hi extends Component{
                     </div>
                     <div className="choices">
                         <div className="counter">
-                            <img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png' alt='champ' className='champ-choice' />
+                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png' alt='champ' className='champ-choice' />{''}</p>
                         </div>
                     </div>
                 </div>
+                <h1>MORE INFO</h1>
             </div>
         );
     };
