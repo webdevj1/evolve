@@ -32,6 +32,7 @@ class Hi extends Component{
         const {champs} = this.state;
         return(
             <div>
+                <h1>Pick Your Champion!</h1>
                 <div id="simulator">
                     <div className="choices" >
                         <div className="goodWith">
