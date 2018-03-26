@@ -1,48 +1,70 @@
 const champs = require('./allChamps');
 
-let topLane = function(){
-    let top = [];
+let tank = function(){
+    let tanks = [];
     for(let key in champs.data){
-        if(champs.data[key].tags.includes('Tank') || champs.data[key].tags.includes('Fighter')){
-            top.push(champs.data[key].id)
-        }
-    }
-    return top;
+        if(champs.data[key].tags.includes('Tank')){
+            tanks.push(champs.data[key].id);
+        };
+    };
+    return tanks;
 }();
 
-let midLane = function(){
-    let mid = [];
+let fighter = function(){
+    let fighters = [];
     for(let key in champs.data){
-        if(champs.data[key].tags.includes('Mage') || champs.data[key].tags.includes('Assassin')){
-            mid.push(champs.data[key].id)
-        }
-    }
-    return mid;
+        if(champs.data[key].tags.includes('Fighter')){
+            fighters.push(champs.data[key].id);
+        };
+    };
+    return fighters;
 }();
 
-let bottomLane = function(){
-    let bottom = [];
+let mage = function(){
+    let mages = [];
     for(let key in champs.data){
-        if(champs.data[key].tags.includes('Marksman') || champs.data[key].tags.includes('Support')){
-            bottom.push(champs.data[key].id)
-        }
-    }
-    return bottom;
+        if(champs.data[key].tags.includes('Mage')){
+            mages.push(champs.data[key].id);
+        };
+    };
+    return mages;
 }();
 
-let jungleLane = function(){
-    let jungle = [];
+let marksman = function(){
+    let marksmen = [];
     for(let key in champs.data){
-        if(champs.data[key].tags.includes('Assassin') || champs.data[key].tags.includes('Tank') || champs.data[key].tags.includes('Fighter')){
-            jungle.push(champs.data[key].id)
-        }
-    }
-    return jungle;
+        if(champs.data[key].tags.includes('Marksman')){
+            marksmen.push(champs.data[key].id);
+        };
+    };
+    return marksmen;
+}();
+
+let assassin = function(){
+    let assassins = [];
+    for(let key in champs.data){
+        if(champs.data[key].tags.includes('Assassin')){
+            assassins.push(champs.data[key].id);
+        };
+    };
+    return assassins;
+}();
+
+let support = function(){
+    let supports = [];
+    for(let key in champs.data){
+        if(champs.data[key].tags.includes('Support')){
+            supports.push(champs.data[key].id);
+        };
+    };
+    return supports;
 }();
 
 module.exports = {
-    topLane: topLane,
-    midLane: midLane,
-    bottomLane: bottomLane,
-    jungleLane: jungleLane
+    tank,
+    fighter,
+    mage,
+    support,
+    assassin,
+    marksman 
 };
