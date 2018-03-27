@@ -6,7 +6,11 @@ class Hi extends Component{
         super();
         this.state = {
             champsData: {},
-            champs:[]
+            champs:[],
+            pick: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
+            counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
+            hold:'',
+            counter2: []
         };
     }
 
@@ -19,13 +23,31 @@ class Hi extends Component{
     }
 
     handleDrag = e =>{
+        let alt = e.target.alt;
+        let champs = [];
         localStorage.setItem('drop', e.target.src);
-        localStorage.setItem('champ', e.target.alt);
+        localStorage.setItem('champ', alt);
     }
+    handleDragStart = e =>{
+        let alt = e.target.alt;
+        axios.get('http://localhost:8000')
+        .then(res=>{
+            let data = res.data.data;
+            for(let key in data){
+                if(key === alt){
+                    this.setState({hold: alt, counter2: data[alt].counters})
+                }
+            }
+        })
+        .catch(err=>console.log(err))
+        
+    }
+
     handleDrop = e =>{
         e.preventDefault();
         e.target.src = localStorage.getItem('drop');
         e.target.parentNode.childNodes[1].nodeValue = localStorage.getItem('champ')
+        this.setState({counter: `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${this.state.counter2[0].champion}.png`})
     }
     handleOver = e =>{
         e.preventDefault();
@@ -40,7 +62,8 @@ class Hi extends Component{
     }
 
     render(){
-        const {champs} = this.state;
+        const {champs, pick, counter, counter2} = this.state;
+        console.log([...this.state.counter2].champion)
         return(
             <div>
                 <h1>Pick Your Champion!</h1>
@@ -54,18 +77,18 @@ class Hi extends Component{
                     <div className="choices" >
                         <div className="goodWith">
                             <div className="info">    
-                                <p style={{fontSize: '20px'}}><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png' alt='champ' className='champ-choice' />{''}</p>
+                                <p style={{fontSize: '20px'}}><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= {pick} alt='champ' className='champ-choice' />{''}</p>
                             </div>
                         </div>
                     </div>
                     <div id="champs">
                         {champs.map((champ, key)=>(
-                            <img draggable={true} onDrag={this.handleDrag} onDragEnd={this.handleEnd} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champ}.png`} alt={champ} key={key} />
+                            <img onDragStart={this.handleDragStart} draggable={true} onDrag={this.handleDrag} onDragEnd={this.handleEnd} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champ}.png`} alt={champ} key={key} />
                         ))}
                     </div>
                     <div className="choices">
                         <div className="counter">
-                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png' alt='champ' className='champ-choice' />{''}</p>
+                            <p style={{fontSize: '20px'}} ><img src= {counter} alt='champ' className='champ-choice' />{''}</p>
                         </div>
                     </div>
                 </div>

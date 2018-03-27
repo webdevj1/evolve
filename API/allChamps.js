@@ -17,7 +17,7 @@ module.exports = {
                 "difficulty": 4
             },
             "counters": [{
-                    "champion": 'Wukong',
+                    "champion": 'MonkeyKing',
                     'win': '36.96%'
                 },
                 {
@@ -321,7 +321,7 @@ module.exports = {
                     'lane': 'jungle'
                 },
                 {
-                    "champion": 'Wukong',
+                    "champion": 'MonkeyKing',
                     'win': '46.24%',
                     'lane': 'jungle'
             }],
@@ -391,7 +391,7 @@ module.exports = {
                     'lane': 'mid'
                 },
                 {
-                    "champion": "Aurelion Sol",
+                    "champion": "AurelionSol",
                     'win': '49.37%',
                     'lane': 'mid'
                 },
@@ -1209,7 +1209,7 @@ module.exports = {
                 'win': '43.35%'
             },
             {
-                "champion": 'Aurelion Sol',
+                "champion": 'AurelionSol',
                 'win': '45.52%'
         }],
             "image": {
@@ -1332,7 +1332,7 @@ module.exports = {
                 "difficulty": 6
             },
             "counters": [{
-                "champion": 'Aurelion Sol',
+                "champion": 'AurelionSol',
                 'win': '37.63%'
             },
             {
@@ -1417,7 +1417,7 @@ module.exports = {
                 'win': '47.02%'
             },
             {
-                "champion": 'Wukong',
+                "champion": 'MonkeyKing',
                 'win': '48.43%'
         }],
             "image": {
