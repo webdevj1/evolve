@@ -1,70 +1,68 @@
 const champs = require('./allChamps');
-
-let tank = function(){
-    let tanks = [];
+ 
+let topLane = function(){
+    let top = [];
     for(let key in champs.data){
-        if(champs.data[key].tags.includes('Tank')){
-            tanks.push(champs.data[key].id);
-        };
-    };
-    return tanks;
+        if(champs.data[key].tags.includes('Tank') || champs.data[key].tags.includes('Fighter')){
+            top.push(champs.data[key].id)
+        }
+    }
+    return top;
 }();
 
-let fighter = function(){
-    let fighters = [];
+let midLane = function(){
+    let mid = [];
     for(let key in champs.data){
-        if(champs.data[key].tags.includes('Fighter')){
-            fighters.push(champs.data[key].id);
-        };
-    };
-    return fighters;
+        if(champs.data[key].tags.includes('Mage') || champs.data[key].tags.includes('Assassin')){
+            mid.push(champs.data[key].id)
+        }
+    }
+    return mid;
 }();
 
-let mage = function(){
-    let mages = [];
+let bottomLane = function(){
+    let bottom = [];
     for(let key in champs.data){
-        if(champs.data[key].tags.includes('Mage')){
-            mages.push(champs.data[key].id);
-        };
-    };
-    return mages;
+        if(champs.data[key].tags.includes('Marksman') || champs.data[key].tags.includes('Support')){
+            bottom.push(champs.data[key].id)
+        }
+    }
+    return bottom;
 }();
 
-let marksman = function(){
-    let marksmen = [];
+let jungleLane = function(){
+    let jungle = [];
     for(let key in champs.data){
-        if(champs.data[key].tags.includes('Marksman')){
-            marksmen.push(champs.data[key].id);
-        };
-    };
-    return marksmen;
-}();
-
-let assassin = function(){
-    let assassins = [];
-    for(let key in champs.data){
-        if(champs.data[key].tags.includes('Assassin')){
-            assassins.push(champs.data[key].id);
-        };
-    };
-    return assassins;
+        if(champs.data[key].tags.includes('Assassin') || champs.data[key].tags.includes('Tank') || champs.data[key].tags.includes('Fighter')){
+            jungle.push(champs.data[key].id)
+        }
+    }
+    return jungle;
 }();
 
 let support = function(){
     let supports = [];
     for(let key in champs.data){
         if(champs.data[key].tags.includes('Support')){
-            supports.push(champs.data[key].id);
-        };
-    };
+            supports.push(champs.data[key].id)
+        }
+    }
     return supports;
 }();
 
+let all = function(){
+    let allchamps = [];
+    for(let key in champs.data){
+        allchamps.push(champs.data[key].id)
+    }
+    return allchamps;
+}();
+
 module.exports = {
-    tank,
-    fighter,
-    mage,
-    support,
-    assassin,
-    marksman 
+    top: topLane,
+    mid: midLane,
+    bot: bottomLane,
+    jungle: jungleLane,
+    support: support,
+    all: all
 };

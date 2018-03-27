@@ -13,7 +13,11 @@ class Hi extends Component{
         super();
         this.state = {
             champsData: {},
-            champs:[]
+            champs:[],
+            pick: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
+            counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
+            hold:'',
+            counter2: []
         };
     }
 
@@ -26,13 +30,31 @@ class Hi extends Component{
     }
 
     handleDrag = e =>{
+        let alt = e.target.alt;
+        let champs = [];
         localStorage.setItem('drop', e.target.src);
-        localStorage.setItem('champ', e.target.alt);
+        localStorage.setItem('champ', alt);
     }
+    handleDragStart = e =>{
+        let alt = e.target.alt;
+        axios.get('http://localhost:8000')
+        .then(res=>{
+            let data = res.data.data;
+            for(let key in data){
+                if(key === alt){
+                    this.setState({hold: alt, counter2: data[alt].counters})
+                }
+            }
+        })
+        .catch(err=>console.log(err))
+        
+    }
+
     handleDrop = e =>{
         e.preventDefault();
         e.target.src = localStorage.getItem('drop');
         e.target.parentNode.childNodes[1].nodeValue = localStorage.getItem('champ')
+        this.setState({counter: `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${this.state.counter2[0].champion}.png`})
     }
     handleOver = e =>{
         e.preventDefault();
@@ -47,39 +69,37 @@ class Hi extends Component{
     }
 
     render(){
-        const {champs} = this.state;
-       
+        const {champs, pick, counter, counter2} = this.state;
+        console.log([...this.state.counter2].champion)
         return(
             <div>
                <img alt="" src={evolve} className="Logo"/>
-                
-                <input placeholder="Enter your Summoner name"/>
-                <h3> Choose your champion!</h3>
-                <img onClick={this.handleRoles} name="fighter" className='roles' src={allChamps} alt="" />
-                <img onClick={this.handleRoles} name="tank" className='roles' src={top} />
-                <img onClick={this.handleRoles} name="mage" className='roles' src={mid} />
+                <input width="500px" placeholder="Enter your Summoner name"/>
+                <h2>Pick Your Champion!</h2>
+                <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="" />
+                <img onClick={this.handleRoles} name="top" className='roles' src={top} />
+                <img onClick={this.handleRoles} name="mid" className='roles' src={mid} />
                 <img onClick={this.handleRoles} name="support" className='roles' src={support} />
-                <img onClick={this.handleRoles} name="marksman" className='roles' src={bottom} />
-                <img onClick={this.handleRoles} name="marksman" className='roles' src={jungle} />
+                <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} />
+                <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} />
 
                 <div id="simulator">
                     <div className="choices" >
                         <div className="goodWith">
-                            <div className="info">  
-                                    <div> <p> Your Champion </p></div>
-                                <p style={{fontSize: '20px'}}><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png' alt='champ' className='champ-choice' />{''}</p>
+                            <div className="info">    
+                                <p style={{fontSize: '20px'}}><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= {pick} alt='champ' className='champ-choice' />{''}</p>
                             </div>
                         </div>
                     </div>
                     <div id="champs">
                         {champs.map((champ, key)=>(
-                            <img draggable={true} onDrag={this.handleDrag} onDragEnd={this.handleEnd} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champ}.png`} alt={champ} key={key}  />
+                            <img onDragStart={this.handleDragStart} draggable={true} onDrag={this.handleDrag} onDragEnd={this.handleEnd} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champ}.png`} alt={champ} key={key} />
                         ))}
                     </div>
                     <div className="choices">
                         <div className="counter">
                         <div> <p>Counter</p> </div>
-                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png' alt='champ' className='champ-choice1' />{''}</p>
+                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' />{''}</p>
     
                         </div>
                     </div>
