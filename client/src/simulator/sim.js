@@ -53,8 +53,8 @@ class Hi extends Component{
             <div>
                <img alt="" src={evolve} className="Logo"/>
                 
-                <input width="500px" placeholder="Enter your Summoner name"/>
-                <h2>Pick Your Champion!</h2>
+                <input placeholder="Enter your Summoner name"/>
+                <h3> Choose your champion!</h3>
                 <img onClick={this.handleRoles} name="fighter" className='roles' src={allChamps} alt="" />
                 <img onClick={this.handleRoles} name="tank" className='roles' src={top} />
                 <img onClick={this.handleRoles} name="mage" className='roles' src={mid} />
@@ -65,18 +65,20 @@ class Hi extends Component{
                 <div id="simulator">
                     <div className="choices" >
                         <div className="goodWith">
-                            <div className="info">    
+                            <div className="info">  
+                                    <div> <p> Your Champion </p></div>
                                 <p style={{fontSize: '20px'}}><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png' alt='champ' className='champ-choice' />{''}</p>
                             </div>
                         </div>
                     </div>
                     <div id="champs">
                         {champs.map((champ, key)=>(
-                            <img draggable={true} onDrag={this.handleDrag} onDragEnd={this.handleEnd} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champ}.png`} alt={champ} key={key} />
+                            <img draggable={true} onDrag={this.handleDrag} onDragEnd={this.handleEnd} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champ}.png`} alt={champ} key={key}  />
                         ))}
                     </div>
                     <div className="choices">
                         <div className="counter">
+                        <div> <p>Counter</p> </div>
                             <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png' alt='champ' className='champ-choice1' />{''}</p>
     
                         </div>
