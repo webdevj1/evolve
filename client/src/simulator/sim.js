@@ -77,12 +77,12 @@ class Hi extends Component{
                 
                 <input width="500px" placeholder="Enter your Summoner name"/>
                 <h2>Pick Your Champion!</h2>
-                <img onClick={this.handleRoles} name="fighter" className='roles' src={allChamps} alt="" />
-                <img onClick={this.handleRoles} name="tank" className='roles' src={top} />
-                <img onClick={this.handleRoles} name="mage" className='roles' src={mid} />
+                <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="" />
+                <img onClick={this.handleRoles} name="top" className='roles' src={top} />
+                <img onClick={this.handleRoles} name="mid" className='roles' src={mid} />
                 <img onClick={this.handleRoles} name="support" className='roles' src={support} />
-                <img onClick={this.handleRoles} name="marksman" className='roles' src={bottom} />
-                <img onClick={this.handleRoles} name="marksman" className='roles' src={jungle} />
+                <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} />
+                <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} />
 
                 <div id="simulator">
                     <div className="choices" >
