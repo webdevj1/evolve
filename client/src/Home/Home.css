@@ -1,0 +1,26 @@
+.Bans {
+    background-color:black;
+    color:white;
+    float: left;
+    height:600px;
+    width:500px;
+
+    
+}
+
+.Wins {
+    background-color:black;
+    color:white;
+    height:600px;
+    width:200px;
+
+}
+
+.Others {
+    background-color:black;
+    color:white;
+    height:600px;
+    width:500px;
+    float:right;
+}
+
