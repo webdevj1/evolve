@@ -10,9 +10,9 @@ p{
 }
 
 #champs{
-    border: 5px groove blueviolet;
+    border: 5px groove whitesmoke;
     width: 700px;
-    height: 500px;
+    height:400px;
     overflow: scroll;
     order: 0;
     justify-content:center;
@@ -26,32 +26,22 @@ p{
     background-color:white;
 }
 .choices{
-    /* border: 5px solid blue; */
     width: 200px;
     height: 300px;
     order: 0;
-    /* float: left; */
+    box-shadow: 0px 0px 5px #cb8;
+    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")
+
 }
-.champ-choice1{
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    vertical-align: top;
+.champ-choice1, .champ-choice{
+    width: 100px;
+    height: 100px;
     -moz-box-shadow: 0 0 5px #cb8;
     -webkit-box-shadow: 0 0 5px #cb8;
     box-shadow: 0px 0px 5px #cb8;
+    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")
 }
 
-.champ-choice2{
-    border-radius: 50%;
-    width: 50px;
-    height: 150px;
-    -moz-box-shadow: 0 0 5px #cb8;
-    -webkit-box-shadow: 0 0 5px #cb8;
-    box-shadow: 0px 0px 5px #cb8;
-    margin-right:150px;
-
-}
 
 .goodWith{
     width: 100px;
@@ -59,7 +49,6 @@ p{
 
 .counter{
     position: relative;
-    /* float: right; */
     width: 50px;
 }
 
@@ -67,18 +56,22 @@ p{
     font-size: 10px
 }
 .roles{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
+    background-color:black;
+    opacity: 0.9;
+  border-radius: 25px;
 }
 .roles:hover{
-    background-color:gold;
-    border: black solid 2px;
+    background-color:whitesmoke;
+    border-radius: 70%;
 }
 
 input {
-    width:550px;
+    width:650px;
+    height:25px;
     margin-top:100px;
-    margin-right:350px;
+    margin-right:280px;
     
 }
 
@@ -87,4 +80,15 @@ width:280px;
 height:100px;
 float:left;
 
+}
+
+
+h2 {
+    font-size:60px;
+    font-family:Alegreya; 
+}
+
+p {
+    font-size:20px;
+    font-family:Alegreya;
 }
