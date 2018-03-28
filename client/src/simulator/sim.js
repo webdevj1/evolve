@@ -24,7 +24,11 @@ class Hi extends Component{
     componentDidMount(){
         axios.get('http://localhost:8000')
     .then(res=>{
-        this.setState({champs: Object.keys(res.data.data)})
+        this.setState({
+            champsData: res.data.data, 
+            champs: Object.keys(res.data.data)
+        })
+
     })
     .catch(err=>console.log(err))
     }
@@ -36,18 +40,13 @@ class Hi extends Component{
         localStorage.setItem('champ', alt);
     }
     handleDragStart = e =>{
+        const {champsData} = this.state;
         let alt = e.target.alt;
-        axios.get('http://localhost:8000')
-        .then(res=>{
-            let data = res.data.data;
-            for(let key in data){
-                if(key === alt){
-                    this.setState({hold: alt, counter2: data[alt].counters})
-                }
+        for(let key in champsData){
+            if(key === alt){
+                this.setState({hold: alt, counter2: champsData[alt].counters})
             }
-        })
-        .catch(err=>console.log(err))
-        
+        }
     }
 
     handleDrop = e =>{
@@ -70,7 +69,6 @@ class Hi extends Component{
 
     render(){
         const {champs, pick, counter, counter2} = this.state;
-        console.log([...this.state.counter2].champion)
         return(
             <div>
                <img alt="" src={evolve} className="Logo"/>
@@ -88,18 +86,18 @@ class Hi extends Component{
                     <div className="choices" >
                         <div className="goodWith">
                             <div className="info">    
-                                <p style={{fontSize: '20px'}}><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= {pick} alt='champ' className='champ-choice' />{''}</p>
+                                <p style={{fontSize: '20px'}}><img onDragOver={this.handleOver} onDrop={this.handleDrop} src= {pick} alt='champ' className='champ-choice1' />{''}</p>
                             </div>
                         </div>
                     </div>
                     <div id="champs">
                         {champs.map((champ, key)=>(
-                            <img onDragStart={this.handleDragStart} draggable={true} onDrag={this.handleDrag} onDragEnd={this.handleEnd} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champ}.png`} alt={champ} key={key} />
+                            <img onDragStart={this.handleDragStart} draggable={true} onDrag={this.handleDrag} onDragEnd={this.handleEnd} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
                         ))}
                     </div>
                     <div className="choices">
                         <div className="counter">
-                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' />{''}</p>
+                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice2' />{''}</p>
     
                         </div>
                     </div>
