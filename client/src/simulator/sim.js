@@ -18,7 +18,7 @@ class Sim extends Component{
             pickName: '',
             counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             hold:'',
-            counter2: []
+            counterName: ''
         };
     }
 
@@ -33,14 +33,15 @@ class Sim extends Component{
     })
     .catch(err=>console.log(err))
     }
-    
+
     handleClick = e =>{
         const {champsData} = this.state;
         let alt = e.target.alt;
         this.setState({
             pick: e.target.src, 
             pickName: alt,
-            counter: `http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champsData[alt].counters[0].champion}.png`
+            counter: `http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champsData[alt].counters[0].champion}.png`,
+            counterName: champsData[alt].counters[0].champion
         });
     }
 
@@ -53,7 +54,7 @@ class Sim extends Component{
     };
 
     render(){
-        const {champs, pick, pickName, counter, counter2} = this.state;
+        const {champs, pick, pickName, counter, counterName} = this.state;
         return(
             <div>
                 <a href="/"><img alt="" src={evolve} className="Logo"/></a>
@@ -82,7 +83,7 @@ class Sim extends Component{
                     <div className="choices">
                         <div className="counter">
                             <div> <p>Counter</p> </div>
-                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' />{''}</p>
+                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' />{counterName}</p>
                             <p id="counter">{''}</p>
                         </div>
                     </div>
