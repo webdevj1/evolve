@@ -2099,6 +2099,26 @@ module.exports = {
                 "magic": 7,
                 "difficulty": 6
             },
+            "counters": [{
+                "champion": 'Jayce',
+                'win': '45.22%'
+            },
+            {
+                "champion": 'Zilean',
+                'win': '47.78%'
+            },
+            {
+                "champion": "Swain",
+                'win': '48.06%'
+            },
+            {
+                "champion": "LeBlanc",
+                'win': '48.29%'
+            },
+            {
+                "champion": 'Vladimir',
+                'win': '48.83%'
+        }],
             "image": {
                 "full": "Fizz.png",
                 "sprite": "champion0.png",
@@ -2149,6 +2169,26 @@ module.exports = {
                 "magic": 6,
                 "difficulty": 3
             },
+            "counters": [{
+                "champion": 'Brand',
+                'win': '38.29%'
+            },
+            {
+                "champion": 'Vladimir',
+                'win': '41.94%'
+            },
+            {
+                "champion": "TwistedFate",
+                'win': '42.48%'
+            },
+            {
+                "champion": "Swain",
+                'win': '42.53%'
+            },
+            {
+                "champion": 'Ekko',
+                'win': '43.08%'
+        }],
             "image": {
                 "full": "Galio.png",
                 "sprite": "champion0.png",
@@ -2199,6 +2239,26 @@ module.exports = {
                 "magic": 4,
                 "difficulty": 9
             },
+            "counters": [{
+                "champion": 'Kayle',
+                'win': '43.78%'
+            },
+            {
+                "champion": 'Olaf',
+                'win': '45.54%'
+            },
+            {
+                "champion": "Akali",
+                'win': '45.79%'
+            },
+            {
+                "champion": "Swain",
+                'win': '46.95%'
+            },
+            {
+                "champion": 'Aatrox',
+                'win': '46.99%'
+        }],
             "image": {
                 "full": "Gangplank.png",
                 "sprite": "champion1.png",
