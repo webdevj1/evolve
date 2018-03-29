@@ -2308,6 +2308,26 @@ module.exports = {
                 "magic": 1,
                 "difficulty": 5
             },
+            "counters": [{
+                    "champion": 'Olaf',
+                    'win': '41.80%'
+                },
+                {
+                    "champion": 'Kayle',
+                    'win': '42.25%'
+                },
+                {
+                    "champion": 'Teemo',
+                    'win': '43.17%'
+                },
+                {
+                    "champion": "Singed",
+                    'win': '44.83%'
+                },
+                {
+                    "champion": 'Darius',
+                    'win': '45.13%'
+            }],
             "image": {
                 "full": "Garen.png",
                 "sprite": "champion1.png",
@@ -2358,6 +2378,26 @@ module.exports = {
                 "magic": 5,
                 "difficulty": 8
             },
+            "counters": [{
+                    "champion": 'Urgot',
+                    'win': '40.43%'
+                },
+                {
+                    "champion": 'Sion',
+                    'win': '41.13%'
+                },
+                {
+                    "champion": 'Aatrox',
+                    'win': '41.53%'
+                },
+                {
+                    "champion": "Kayle",
+                    'win': '43.67%'
+                },
+                {
+                    "champion": 'Wukong',
+                    'win': '43.53%'
+            }],
             "image": {
                 "full": "Gnar.png",
                 "sprite": "champion1.png",
@@ -2408,6 +2448,26 @@ module.exports = {
                 "magic": 6,
                 "difficulty": 5
             },
+            "counters": [{
+                    "champion": 'Shaco',
+                    'win': '35.33%'
+                },
+                {
+                    "champion": 'Graves',
+                    'win': '38.26%'
+                },
+                {
+                    "champion": 'Shyvana',
+                    'win': '38.52%'
+                },
+                {
+                    "champion": "Vi",
+                    'win': '38.52%'
+                },
+                {
+                    "champion": 'Nunu',
+                    'win': '39.22%'
+            }],
             "image": {
                 "full": "Gragas.png",
                 "sprite": "champion1.png",
@@ -2458,6 +2518,26 @@ module.exports = {
                 "magic": 3,
                 "difficulty": 3
             },
+            "counters": [{
+                    "champion": 'Volibear',
+                    'win': '43.86%'
+                },
+                {
+                    "champion": 'Evelynn',
+                    'win': '44.93%'
+                },
+                {
+                    "champion": 'Skarner',
+                    'win': '45.00%'
+                },
+                {
+                    "champion": "Warwick",
+                    'win': '45.07%'
+                },
+                {
+                    "champion": 'Shaco',
+                    'win': '45.35%'
+            }],
             "image": {
                 "full": "Graves.png",
                 "sprite": "champion1.png",
@@ -2507,6 +2587,26 @@ module.exports = {
                 "magic": 4,
                 "difficulty": 6
             },
+            "counters": [{
+                    "champion": 'Camille',
+                    'win': '41.98%'
+                },
+                {
+                    "champion": 'Warwick',
+                    'win': '42.47%'
+                },
+                {
+                    "champion": 'Fiddlesticks',
+                    'win': '42.86%'
+                },
+                {
+                    "champion": "MasterYi",
+                    'win': '43.02%'
+                },
+                {
+                    "champion": 'Jax',
+                    'win': '43.25%'
+            }],
             "image": {
                 "full": "Hecarim.png",
                 "sprite": "champion1.png",
@@ -2557,6 +2657,26 @@ module.exports = {
                 "magic": 8,
                 "difficulty": 8
             },
+            "counters": [{
+                    "champion": 'Yasuo',
+                    'win': '44.08%'
+                },
+                {
+                    "champion": 'Veigar',
+                    'win': '45.33%'
+                },
+                {
+                    "champion": 'Ahri',
+                    'win': '48.73%'
+                },
+                {
+                    "champion": "Fizz",
+                    'win': '49.01%'
+                },
+                {
+                    "champion": 'Katarina',
+                    'win': '50.00%'
+            }],
             "image": {
                 "full": "Heimerdinger.png",
                 "sprite": "champion1.png",
@@ -2607,6 +2727,26 @@ module.exports = {
                 "magic": 3,
                 "difficulty": 4
             },
+            "counters": [{
+                    "champion": 'Singed',
+                    'win': '40.45%'
+                },
+                {
+                    "champion": 'Kayle',
+                    'win': '42.86%'
+                },
+                {
+                    "champion": 'Yorick',
+                    'win': '44.03%'
+                },
+                {
+                    "champion": "TahmKench",
+                    'win': '44.66%'
+                },
+                {
+                    "champion": 'Wukong',
+                    'win': '45.08%'
+            }],
             "image": {
                 "full": "Illaoi.png",
                 "sprite": "champion1.png",
@@ -2657,6 +2797,26 @@ module.exports = {
                 "magic": 5,
                 "difficulty": 5
             },
+            "counters": [{
+                    "champion": 'Pantheon',
+                    'win': '40.41%'
+                },
+                {
+                    "champion": 'Singed',
+                    'win': '43.51%'
+                },
+                {
+                    "champion": 'Gangplank',
+                    'win': '44.90%'
+                },
+                {
+                    "champion": "Maokai",
+                    'win': '45.08%'
+                },
+                {
+                    "champion": 'Illaoi',
+                    'win': '45.34%'
+            }],
             "image": {
                 "full": "Irelia.png",
                 "sprite": "champion1.png",
