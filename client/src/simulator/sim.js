@@ -33,18 +33,7 @@ class Sim extends Component{
     })
     .catch(err=>console.log(err))
     }
-
-    handleDragStart = e =>{
-        const {champsData} = this.state;
-        let alt = e.target.alt;
-        localStorage.setItem('drop', e.target.src);
-        localStorage.setItem('champ', alt);
-        for(let key in champsData){
-            if(key === alt){
-                this.setState({hold: alt, counter2: champsData[alt].counters})
-            }
-        }
-    }
+    
     handleClick = e =>{
         const {champsData} = this.state;
         let alt = e.target.alt;
@@ -53,16 +42,6 @@ class Sim extends Component{
             pickName: alt,
             counter: `http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champsData[alt].counters[0].champion}.png`
         });
-    }
-
-    handleDrop = e =>{
-        e.preventDefault();
-        e.target.src = localStorage.getItem('drop');
-        e.target.parentNode.childNodes[1].nodeValue = localStorage.getItem('champ')
-        this.setState({counter: `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${this.state.counter2[0].champion}.png`})
-    }
-    handleOver = e =>{
-        e.preventDefault();
     }
 
     handleRoles = e =>{
