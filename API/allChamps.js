@@ -5099,6 +5099,26 @@ module.exports = {
                 "magic": 2,
                 "difficulty": 3
             },
+            "counters": [{
+                    "champion": 'Nocturne',
+                    'win': '46.70%'
+                },
+                {
+                    "champion": 'Jax',
+                    'win': '46.72%'
+                },
+                {
+                    "champion": 'Udyr',
+                    'win': '48.21%'
+                },
+                {
+                    "champion": "Olaf",
+                    'win': '48.22%'
+                },
+                {
+                    "champion": 'Shaco',
+                    'win': '48.41%'
+            }],
             "image": {
                 "full": "MonkeyKing.png",
                 "sprite": "champion2.png",
@@ -5149,6 +5169,26 @@ module.exports = {
                 "magic": 7,
                 "difficulty": 4
             },
+            "counters": [{
+                    "champion": 'Teemo',
+                    'win': '37.72%'
+                },
+                {
+                    "champion": 'Gnar',
+                    'win': '43.26%'
+                },
+                {
+                    "champion": 'Swain',
+                    'win': '43.50%'
+                },
+                {
+                    "champion": "Singed",
+                    'win': '45.28%'
+                },
+                {
+                    "champion": 'Illaoi',
+                    'win': '46.09%'
+            }],
             "image": {
                 "full": "Mordekaiser.png",
                 "sprite": "champion2.png",
