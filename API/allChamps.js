@@ -7174,7 +7174,7 @@ module.exports = {
                 "difficulty": 2
             },
             "counters": [{
-                "champion": "Miss Fortune",
+                "champion": "MissFortune",
                 'win': '47.43%'
             },
             {

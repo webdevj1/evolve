@@ -11,6 +11,7 @@ const roles = require('../API/roles.js');
 const items = require('../API/items.js');
 const maps = require('../API/maps.js');
 const user_profiles = require('../API/profileIcons.js');
+const itemBuild = require('../API/itemBuild.js');
 
 
 /* GET home page. */
@@ -28,6 +29,10 @@ router.get('/roles', function(req, res, next) {
 
 router.get('/items', function(req, res, next) {
   res.json(items)
+});
+
+router.get('/itemsbuild', function(req, res, next) {
+  res.json(itemBuild)
 });
 
 router.get('/maps', function(req, res, next) {

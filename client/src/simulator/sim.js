@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import evolve from "../images/Evolve.png"
 import top from "../images/Roles/Top_icon.png"
 import mid from "../images/Roles/Mid_icon.png"
 import bottom from "../images/Roles/Bottom_icon.png"
@@ -16,53 +15,73 @@ class Sim extends Component{
             champs:[],
             pick: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             pickName: '',
+            pickItems: [],
             counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
-            hold:'',
-            counterName: ''
+            counterName: '',
+            counterItems: []
         };
     }
 
-    componentDidMount(){
-        axios.get('http://localhost:8000')
-    .then(res=>{
+  componentDidMount() {
+    axios.get('http://localhost:8000')
+    .then(res => {
         this.setState({
-            champsData: res.data.data, 
-            champs: Object.keys(res.data.data)
-        })
-
+            champsData: res.data.data, // Importing the champ data
+            champs: Object.keys(res.data.data) //Grabs the champs names for their images
+        });
     })
-    .catch(err=>console.log(err))
-    }
+    .catch(err => console.log(err));
+  }
 
     handleClick = e =>{
         const {champsData} = this.state;
-        let alt = e.target.alt;
+        let alt = e.target.alt; //champ's name
         this.setState({
-            pick: e.target.src, 
-            pickName: alt,
-            counter: `http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champsData[alt].counters[0].champion}.png`,
-            counterName: champsData[alt].counters[0].champion
+            pick: e.target.src, //changing the empty square with the champ user clicked
+            pickName: alt, //renders the clicked champ's name under the picture
+            counter: `http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champsData[alt].counters[0].champion}.png`, //gives the image of the counter champ on the right
+            counterName: champsData[alt].counters[0].champion //renders the counter champ's name under the picture on the right
         });
+
+        axios.get('http://localhost:8000/itemsbuild')
+        .then(res=>{
+            res.data.map(build=>{
+                let items = build.hashes.finalitemshashfixed.highestWinrate.hash.replace(/-/g, ' ').split(' '); // gets all the items to complete build
+                if(Number(champsData[alt].key) === build.championId){ // looking for the clicked champ's items
+                    this.setState({
+                        pickItems: items //storing it in the state
+                    });
+                };
+                if(Number(champsData[champsData[alt].counters[0].champion].key) === build.championId){ //Looking for the counter champ's items
+                    this.setState({
+                        counterItems: items
+                    });
+                };
+            });
+        })
+        .catch(err=>console.log(err));
     }
 
-    handleRoles = e =>{
-        localStorage.setItem('role', e.target.name)
-        axios.get('http://localhost:8000/roles')
-        .then(res=>{
-            this.setState({champs: res.data[localStorage.getItem('role')]});
-        });
+    handleRoles = e => {
+        let lanes = e.target.name; //getting the name of the lanes for the lanes images
+        axios
+        .get('http://localhost:8000/roles') //getting list of champs according to lanes
+        .then(res => {
+            this.setState({
+            champs: res.data[lanes] // filters the champs available according to the lanes clicked on
+            });
+        })
     };
 
     render(){
-        const {champs, pick, pickName, counter, counterName} = this.state;
+        const {champs, pick, pickName, counter, counterName, pickItems, counterItems} = this.state;
         return(
             <div>
-                <a href="/"><img alt="" src={evolve} className="Logo"/></a>
                 <input width="500px" placeholder="Enter your Summoner name"/>
                 <h2>Pick Your Champion!</h2>
                 <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="" />
                 <img onClick={this.handleRoles} name="top" className='roles' src={top} />
-                <img onClick={this.handleRoles} name="mid" className='roles' src={mid} />
+                <img onClick={this.handleRoles} name="mid" className='roles' src={mid} />       {/*  All of the lanes available  */}
                 <img onClick={this.handleRoles} name="support" className='roles' src={support} />
                 <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} />
                 <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} />
@@ -71,27 +90,44 @@ class Sim extends Component{
                     <div className="choices" >
                         <div className="goodWith">
                             <div id="pick" className="info">    
-                                <p style={{fontSize: '20px'}}><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={pick} alt='champ' className='champ-choice1' />{pickName}</p>
+                                <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
+                                <p>{pickName}</p>
                             </div>
                         </div>
+                        {pickItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
+                        {pickItems.map(item=>{
+                            if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
+                                return(
+                                    <img className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                )
+                            }
+                        })}
                     </div>
                     <div id="champs">
                         {champs.map((champ, key)=>(
-                            <img onClick={this.handleClick} onDragStart={this.handleDragStart} draggable={true} onDrag={this.handleDrag} onDragEnd={this.handleEnd} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
+                            <img onClick={this.handleClick} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
                         ))}
                     </div>
                     <div className="choices">
                         <div className="counter">
                             <div> <p>Counter</p> </div>
-                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' />{counterName}</p>
-                            <p id="counter">{''}</p>
+                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' />{''}</p>
+                            <p id="counter">{counterName}</p>
                         </div>
+                        {counterItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''}
+                        {counterItems.map(item=>{
+                            if(!isNaN(Number(item))){
+                                return(
+                                    <img className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                )
+                            }
+                        })}
                     </div>
                 </div>
                 <h1>MORE INFO</h1>
             </div>
-        );
-    };
+    );
+  };
 };
 
 export default Sim;
