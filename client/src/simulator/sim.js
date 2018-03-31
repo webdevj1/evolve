@@ -7,6 +7,7 @@ import jungle from "../images/Roles/Jungle_icon.png"
 import allChamps from "../images/Roles/Fill_Icon.png"
 import support from "../images/Roles/Support_Icon.png"
 
+
 class Sim extends Component{
     constructor(){
         super();
@@ -18,8 +19,7 @@ class Sim extends Component{
             pickItems: [],
             counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             counterName: '',
-            counterItems: [],
-            userInputChamp:'' //filter by champ name
+            counterItems: []
         };
     }
 
@@ -41,7 +41,8 @@ class Sim extends Component{
             pick: e.target.src, //changing the empty square with the champ user clicked
             pickName: alt, //renders the clicked champ's name under the picture
             counter: `http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champsData[alt].counters[0].champion}.png`, //gives the image of the counter champ on the right
-            counterName: champsData[alt].counters[0].champion //renders the counter champ's name under the picture on the right
+            counterName: champsData[alt].counters[0].champion, //renders the counter champ's name under the picture on the right
+            counterSplash: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champsData[alt].counters[0].champion}_0.jpg`
         });
 
         axios.get('http://localhost:8000/itemsbuild')
@@ -103,7 +104,7 @@ class Sim extends Component{
                 <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} />
 
                 <div id="simulator">
-                    <div className="choices" >
+                    <div className="choices">
                         <div className="goodWith">
                             <div id="pick" className="info">    
                                 <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
@@ -127,7 +128,7 @@ class Sim extends Component{
                     <div className="choices">
                         <div className="counter">
                             <div> <p>Counter</p> </div>
-                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' />{''}</p>
+                            <p style={{fontSize: '20px'}} ><img src={counter} alt='champ' className='champ-choice1' />{''}</p>
                             <p id="counter">{counterName}</p>
                         </div>
                         {counterItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''}
