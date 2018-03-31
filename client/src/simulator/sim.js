@@ -77,12 +77,19 @@ class Sim extends Component{
 
     handleInput = e =>{
         let name = e.target.value
-        if(this.state.champsData[name] !== undefined  )
-
-        this.setState({
-
-            champs: [this.state.champsData[name].id]
-           // champs:name
+        const {champs} = this.state;
+        axios
+        .get('http://localhost:8000/roles') //getting list of champs according to lanes
+        .then(res => {
+            let champions = res.data.all
+            let newChamps = champions.filter(champ=>{
+                if(champ.toLowerCase().startsWith(name.toLowerCase())){
+                    return champ;
+                }
+            });
+            if(newChamps.length !== 0){
+                this.setState({champs: newChamps})
+            }
         })
         
       }
@@ -92,7 +99,7 @@ class Sim extends Component{
         return(
             <div>
 
-                <input width="500px" className="summonername" placeholder="Search for a user or champions"/>
+                <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a user or champions"/>
                 <br/>
                 <br/>
                 <div className="allroles">
@@ -118,13 +125,12 @@ class Sim extends Component{
                         {pickItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
-                                    <img className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                    <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
                                 )
                             }
                         })}
                     </div>
-                    <div id="champs">
-                   
+                    <div id="champs">   
                         {champs.map((champ, key)=>(
                             <img onClick={this.handleClick} className="choose grow" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
                         ))}       
