@@ -76,13 +76,21 @@ p{
     border-radius: 70%;
 }
 
-input {
+.summonername {
     width:650px;
-    height:25px;
+    height:40px;
     margin-top:100px;
     margin-right:280px;
-    
+    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
+    box-shadow: 0px 0px 5px #cb8;
+    border-radius:15px; 
+    color:white;
+    font-size:25px;
+    font-weight:100%;
+    font-family:Alegreya sans-serif; 
+    margin-bottom:29px;
 }
+
 
 .Logo {
 width:280px;
@@ -96,6 +104,7 @@ margin-top: 30px;
 h2 {
     font-size:60px;
     font-family:Alegreya; 
+    color:rgb(29, 49, 58);
 }
 
 p {

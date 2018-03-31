@@ -77,18 +77,23 @@ class Sim extends Component{
         const {champs, pick, pickName, counter, counterName, pickItems, counterItems} = this.state;
         return(
             <div>
-                <input width="500px" placeholder="Enter your Summoner name"/>
-                <h2>Pick Your Champion!</h2>
+                <input width="500px" className="summonername" placeholder="Search for a user or champions"/>
+                <br/>
+                <br/>
+                <div className="allroles">
                 <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="" />
                 <img onClick={this.handleRoles} name="top" className='roles' src={top} />
                 <img onClick={this.handleRoles} name="mid" className='roles' src={mid} />       {/*  All of the lanes available  */}
                 <img onClick={this.handleRoles} name="support" className='roles' src={support} />
                 <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} />
-                <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} />
-
+                <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} /> {" "}
+                </div>
+          
+        
                 <div id="simulator">
                     <div className="choices" >
                         <div className="goodWith">
+                        <div> <p>Your pick</p> </div>
                             <div id="pick" className="info">    
                                 <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
                                 <p>{pickName}</p>
