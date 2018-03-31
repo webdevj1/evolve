@@ -98,6 +98,7 @@ class Sim extends Component{
         const {champs, pick, pickName, counter, counterName, pickItems, counterItems, userInputChamp} = this.state;
         return(
             <div>
+
                 <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a user or champions"/>
                 <br/>
                 <br/>
@@ -124,7 +125,7 @@ class Sim extends Component{
                         {pickItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
-                                    <img className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                    <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
                                 )
                             }
                         })}
