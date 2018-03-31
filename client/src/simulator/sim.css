@@ -2,6 +2,7 @@
     display: flex;
     justify-content:center;
 }
+
 p{
     color: #efd;
 }
@@ -42,6 +43,26 @@ p{
     background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
     border-radius:15px;
 }
+.pickname{
+    text-shadow: 1px 1px 2px rgb(24, 95, 209), 0 0 1em rgb(8, 79, 194), 0 0 0.2em rgb(17, 130, 175);
+    text-align: center;
+    font-family: 'Berkshire Swash', cursive;
+    letter-spacing:1px;
+    border:1px rgb(13, 43, 39) groove;
+    border-width: 10px 60px ;
+    background-color:rgb(14, 2, 0);
+    
+}
+
+.itemname {
+    text-shadow: 1px 1px 2px rgb(24, 95, 209), 0 0 1em rgb(8, 79, 194), 0 0 0.2em rgb(17, 130, 175);
+    text-align: center;
+    font-family: 'Berkshire Swash', cursive;
+    letter-spacing:1px;
+    border:1px rgb(13, 43, 39) groove;
+    border-width: 10px 60px ;
+    background-color:rgb(14, 2, 0);
+}
 
 .champ-choice1, .champ-choice{
     width: 100px;
@@ -53,22 +74,14 @@ p{
 }
 
 
-.counter{
-   text-align: center;
-   font-family: 'Oswald', sans-serif;
-   letter-spacing:1px;
-
-   
-}
-
 .items{
     width: 40px;
     height: 40px
 }
 
 p{
-    font-size: 10px
-    
+    font-size: 10px;
+
 }
 .roles{
     width: 50px;
