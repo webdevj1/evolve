@@ -17,11 +17,9 @@ class Sim extends Component{
             pick: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             pickName: '',
             pickItems: [],
-            pickSplash: '',
             counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             counterName: '',
-            counterItems: [],
-            counterSplash: ''
+            counterItems: []
         };
     }
 
@@ -77,10 +75,23 @@ class Sim extends Component{
         })
     };
 
+    handleInput = e =>{
+        let name = e.target.value
+        if(this.state.champsData[name] !== undefined  )
+
+        this.setState({
+
+            champs: [this.state.champsData[name].id]
+           // champs:name
+        })
+        
+      }
+
     render(){
-        const {champs, pick, pickName, counter, counterName, pickItems, counterItems, pickSplash, counterSplash} = this.state;
+        const {champs, pick, pickName, counter, counterName, pickItems, counterItems, userInputChamp} = this.state;
         return(
             <div>
+
                 <input width="500px" className="summonername" placeholder="Search for a user or champions"/>
                 <br/>
                 <br/>
