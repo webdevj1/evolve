@@ -91,7 +91,7 @@ class Sim extends Component{
                 <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} />
 
                 <div id="simulator">
-                    <div style={{backgroundImage: `url(${pickSplash})`, backgroundSize: 'contain'}} className="choices">
+                    <div className="choices">
                         <div className="goodWith">
                             <div id="pick" className="info">    
                                 <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
@@ -112,7 +112,7 @@ class Sim extends Component{
                             <img onClick={this.handleClick} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
                         ))}
                     </div>
-                    <div style={{backgroundImage: `url(${counterSplash})`, height: '100%', backgroundSize: 'contain', backgroundRepeat:'no-repeat'}} className="choices">
+                    <div className="choices">
                         <div className="counter">
                             <div> <p>Counter</p> </div>
                             <p style={{fontSize: '20px'}} ><img src={counter} alt='champ' className='champ-choice1' />{''}</p>
