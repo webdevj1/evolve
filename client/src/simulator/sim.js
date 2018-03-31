@@ -18,7 +18,8 @@ class Sim extends Component{
             pickItems: [],
             counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             counterName: '',
-            counterItems: []
+            counterItems: [],
+            userInputChamp:'' //filter by champ name
         };
     }
 
@@ -73,11 +74,26 @@ class Sim extends Component{
         })
     };
 
+    handleInput = e =>{
+        let name = e.target.value
+        if(this.state.champsData[name] !== undefined  )
+
+        this.setState({
+
+            champs: [this.state.champsData[name].id]
+           // champs:name
+        })
+        
+      }
+
     render(){
-        const {champs, pick, pickName, counter, counterName, pickItems, counterItems} = this.state;
+        const {champs, pick, pickName, counter, counterName, pickItems, counterItems, userInputChamp} = this.state;
         return(
             <div>
-                <input width="500px" placeholder="Enter your Summoner name"/>
+                <input width="500px" placeholder="Enter your Champion name" onInput={this.handleInput} type="text"/>
+              
+                <br/>
+                {userInputChamp}
                 <h2>Pick Your Champion!</h2>
                 <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="" />
                 <img onClick={this.handleRoles} name="top" className='roles' src={top} />
