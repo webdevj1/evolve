@@ -55,7 +55,8 @@ p{
 
 .counter{
    text-align: center;
-   font-family: cursive;
+   font-family: 'Oswald', sans-serif;
+   letter-spacing:1px;
 
    
 }
@@ -67,6 +68,7 @@ p{
 
 p{
     font-size: 10px
+    
 }
 .roles{
     width: 50px;
@@ -96,8 +98,9 @@ p{
     color:white;
     font-size:25px;
     font-weight:100%;
-    font-family:Alegreya sans-serif; 
+    font-family: 'Oswald', sans-serif;
     margin-bottom:29px;
+    letter-spacing:1px;
 }
 
 .summonername:hover {
@@ -122,14 +125,16 @@ margin-top: 30px;
 
 h2 {
     font-size:60px;
-    font-family:Alegreya; 
+    font-family: 'Oswald', sans-serif;
+    letter-spacing:1px;
     color:rgb(29, 49, 58);
 }
 
 p {
     width:240px;
     font-size:20px;
-    font-family:Alegreya;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing:1px;
 }
 
 .inner {
