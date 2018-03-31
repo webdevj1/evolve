@@ -17,11 +17,9 @@ class Sim extends Component{
             pick: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             pickName: '',
             pickItems: [],
-            pickSplash: '',
             counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             counterName: '',
-            counterItems: [],
-            counterSplash: ''
+            counterItems: []
         };
     }
 
@@ -77,12 +75,30 @@ class Sim extends Component{
         })
     };
 
+    handleInput = e =>{
+        let name = e.target.value
+        const {champs} = this.state;
+        axios
+        .get('http://localhost:8000/roles') //getting list of champs according to lanes
+        .then(res => {
+            let champions = res.data.all
+            let newChamps = champions.filter(champ=>{
+                if(champ.toLowerCase().startsWith(name.toLowerCase())){
+                    return champ;
+                }
+            });
+            if(newChamps.length !== 0){
+                this.setState({champs: newChamps})
+            }
+        })
+        
+      }
 
     render(){
-        const {champs, pick, pickName, counter, counterName, pickItems, counterItems, pickSplash, counterSplash} = this.state;
+        const {champs, pick, pickName, counter, counterName, pickItems, counterItems, userInputChamp} = this.state;
         return(
             <div>
-                <input width="500px" className="summonername" placeholder="Search for a user or champions"/>
+                <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a user or champions"/>
                 <br/>
                 <br/>
                 <div className="allroles">
