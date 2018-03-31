@@ -77,22 +77,28 @@ class Sim extends Component{
         })
     };
 
+
     render(){
         const {champs, pick, pickName, counter, counterName, pickItems, counterItems, pickSplash, counterSplash} = this.state;
         return(
             <div>
-                <input width="500px" placeholder="Enter your Summoner name"/>
-                <h2>Pick Your Champion!</h2>
+                <input width="500px" className="summonername" placeholder="Search for a user or champions"/>
+                <br/>
+                <br/>
+                <div className="allroles">
                 <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="" />
                 <img onClick={this.handleRoles} name="top" className='roles' src={top} />
                 <img onClick={this.handleRoles} name="mid" className='roles' src={mid} />       {/*  All of the lanes available  */}
                 <img onClick={this.handleRoles} name="support" className='roles' src={support} />
                 <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} />
-                <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} />
-
+                <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} /> {" "}
+                </div>
+          
+        
                 <div id="simulator">
                     <div className="choices">
                         <div className="goodWith">
+                        <div> <p>Your champion</p> </div>
                             <div id="pick" className="info">    
                                 <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
                                 <p>{pickName}</p>
@@ -107,16 +113,16 @@ class Sim extends Component{
                             }
                         })}
                     </div>
-                    <div id="champs">
+                    <div id="champs">   
                         {champs.map((champ, key)=>(
-                            <img onClick={this.handleClick} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
-                        ))}
+                            <img onClick={this.handleClick} className="choose grow" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
+                        ))}       
                     </div>
                     <div className="choices">
                         <div className="counter">
-                            <div> <p>Counter</p> </div>
-                            <p style={{fontSize: '20px'}} ><img src={counter} alt='champ' className='champ-choice1' />{''}</p>
-                            <p id="counter">{counterName}</p>
+                            <div> <p>Counter champion</p> </div>
+                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' /> </p>
+                            <p className="counter">{counterName}</p>
                         </div>
                         {counterItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''}
                         {counterItems.map(item=>{
