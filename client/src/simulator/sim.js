@@ -7,6 +7,7 @@ import jungle from "../images/Roles/Jungle_icon.png"
 import allChamps from "../images/Roles/Fill_Icon.png"
 import support from "../images/Roles/Support_Icon.png"
 
+
 class Sim extends Component{
     constructor(){
         super();
@@ -16,9 +17,11 @@ class Sim extends Component{
             pick: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             pickName: '',
             pickItems: [],
+            pickSplash: '',
             counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             counterName: '',
-            counterItems: []
+            counterItems: [],
+            counterSplash: ''
         };
     }
 
@@ -40,7 +43,8 @@ class Sim extends Component{
             pick: e.target.src, //changing the empty square with the champ user clicked
             pickName: alt, //renders the clicked champ's name under the picture
             counter: `http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champsData[alt].counters[0].champion}.png`, //gives the image of the counter champ on the right
-            counterName: champsData[alt].counters[0].champion //renders the counter champ's name under the picture on the right
+            counterName: champsData[alt].counters[0].champion, //renders the counter champ's name under the picture on the right
+            counterSplash: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champsData[alt].counters[0].champion}_0.jpg`
         });
 
         axios.get('http://localhost:8000/itemsbuild')
@@ -74,7 +78,7 @@ class Sim extends Component{
     };
 
     render(){
-        const {champs, pick, pickName, counter, counterName, pickItems, counterItems} = this.state;
+        const {champs, pick, pickName, counter, counterName, pickItems, counterItems, pickSplash, counterSplash} = this.state;
         return(
             <div>
                 <input width="500px" className="summonername" placeholder="Search for a user or champions"/>
@@ -91,7 +95,7 @@ class Sim extends Component{
           
         
                 <div id="simulator">
-                    <div className="choices" >
+                    <div className="choices">
                         <div className="goodWith">
                         <div> <p>Your champion</p> </div>
                             <div id="pick" className="info">    
@@ -109,14 +113,15 @@ class Sim extends Component{
                         })}
                     </div>
                     <div id="champs">
+                   
                         {champs.map((champ, key)=>(
-                            <img onClick={this.handleClick} className="choose" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
-                        ))}
+                            <img onClick={this.handleClick} className="choose grow" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
+                        ))}       
                     </div>
                     <div className="choices">
                         <div className="counter">
                             <div> <p>Counter champion</p> </div>
-                            <p style={{fontSize: '30px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' />{''}</p>
+                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' /> </p>
                             <p className="counter">{counterName}</p>
                         </div>
                         {counterItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''}
