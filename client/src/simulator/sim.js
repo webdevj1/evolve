@@ -151,7 +151,199 @@ class Sim extends Component{
                         })}
                     </div>
                 </div>
-                <h1>MORE INFO</h1>
+
+                <h1>Item Build</h1>
+                <div id="simulator">
+                    <div className="choices">
+                        <div className="goodWith">
+                        
+                           
+                        </div>
+                        {pickItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
+                        {pickItems.map(item=>{
+                            if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
+                                return(
+                                    <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                )
+                            }
+                        })}
+                    </div>
+                    <div id="champs">   
+                    {counterItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''}
+                        {counterItems.map(item=>{
+                            if(!isNaN(Number(item))){
+                                return(
+                                    <img className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                )
+                            }
+                        })}
+                    </div>
+                    <div className="choices">
+                      
+                        {counterItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''}
+                        {counterItems.map(item=>{
+                            if(!isNaN(Number(item))){
+                                return(
+                                    <img className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                )
+                            }
+                        })}
+                    </div>
+                </div>
+
+                <h1>Share This Site</h1>
+
+                <div id="simulator">
+                    
+                    <div id="champs2">   
+                    
+                                             
+
+                                                        <a href="https://bufferapp.com/add?url=https://simplesharebuttons.com&amp;text=Simple Share Buttons" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/buffer.png" alt="Buffer" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://www.digg.com/submit?url=https://simplesharebuttons.com" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" />
+
+                        </a>
+
+
+
+
+
+                        <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+
+                        </a>
+
+
+
+
+
+                        <a href="https://plus.google.com/share?url=https://simplesharebuttons.com" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+
+                        </a>
+
+
+
+
+
+                        <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" />
+
+                        </a>
+
+
+
+
+
+                        <a href="javascript:;" onclick="window.print()">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://reddit.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://www.stumbleupon.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/stumbleupon.png" alt="StumbleUpon" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://www.tumblr.com/share/link?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/tumblr.png" alt="Tumblr" />
+
+                        </a>
+
+
+
+
+
+                        <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://vkontakte.ru/share.php?url=https://simplesharebuttons.com" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/vk.png" alt="VK" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://www.yummly.com/urb/verify?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/yummly.png" alt="Yummly" />
+
+                        </a>
+
+                    </div>
+                   
+                </div>
+                            <br/>
+                <h1>SAVE YOUR PROGRESS</h1>
+
+                <button>Create Profile</button>
+                            <br/>
+                            <p></p>
             </div>
     );
   };
