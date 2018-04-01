@@ -17,11 +17,9 @@ class Sim extends Component{
             pick: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             pickName: '',
             pickItems: [],
-            pickSplash: '',
             counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             counterName: '',
-            counterItems: [],
-            counterSplash: ''
+            counterItems: []
         };
     }
 
@@ -77,11 +75,31 @@ class Sim extends Component{
         })
     };
 
+    handleInput = e =>{
+        let name = e.target.value
+        const {champs} = this.state;
+        axios
+        .get('http://localhost:8000/roles') //getting list of champs according to lanes
+        .then(res => {
+            let champions = res.data.all
+            let newChamps = champions.filter(champ=>{
+                if(champ.toLowerCase().startsWith(name.toLowerCase())){
+                    return champ;
+                }
+            });
+            if(newChamps.length !== 0){
+                this.setState({champs: newChamps})
+            }
+        })
+        
+      }
+
     render(){
-        const {champs, pick, pickName, counter, counterName, pickItems, counterItems, pickSplash, counterSplash} = this.state;
+        const {champs, pick, pickName, counter, counterName, pickItems, counterItems, userInputChamp} = this.state;
         return(
             <div>
-                <input width="500px" className="summonername" placeholder="Search for a user or champions"/>
+
+                <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a user or champion"/>
                 <br/>
                 <br/>
                 <div className="allroles">
@@ -98,7 +116,7 @@ class Sim extends Component{
                     <div className="choices">
                         <div className="goodWith">
                         <div> <p className="itemname">Your champion</p> </div>
-                            <div id="pick" className="info">    
+                            <div id="pick">    
                                 <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
                                 <p className="pickname">{pickName}</p>
                             </div>
@@ -107,13 +125,12 @@ class Sim extends Component{
                         {pickItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
-                                    <img className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                    <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
                                 )
                             }
                         })}
                     </div>
-                    <div id="champs">
-                   
+                    <div id="champs">   
                         {champs.map((champ, key)=>(
                             <img onClick={this.handleClick} className="choose grow" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
                         ))}       
@@ -134,7 +151,7 @@ class Sim extends Component{
                         })}
                     </div>
                 </div>
-                <h1>MORE INFO</h1>
+                <div className="info">MORE INFO</div>
             </div>
     );
   };
