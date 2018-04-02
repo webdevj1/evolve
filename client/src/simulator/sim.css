@@ -20,6 +20,19 @@ p{
     box-shadow: 0px 0px 5px #cb8;
     background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
 }
+
+#champs2{
+    border-radius:15px;
+    width: 700px;
+    height:139px;
+    overflow: scroll;
+    order: 0;
+    justify-content:center;
+    -moz-box-shadow: 0 0 5px #cb8;
+    -webkit-box-shadow: 0 0 5px #cb8;
+    box-shadow: 0px 0px 5px #cb8;
+    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")
+}
 .choose{
     padding:10px;
     width: 70px;
@@ -43,6 +56,7 @@ box-shadow:
     background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
     border-radius:15px;
 }
+<<<<<<< HEAD
  .pickname{
     text-shadow: 1px 1px 2px rgb(85, 77, 6), 0 0 1em rgb(85, 77, 6), 0 0 0.2em rgb(85, 77, 6);
     text-align: center;
@@ -61,6 +75,11 @@ box-shadow:
     background-color:rgb(14, 2, 0);
 } */ 
 
+=======
+.test{
+    display: none;
+}
+>>>>>>> 99596ead0544d6b1cb2303acc9cf72006d67ddbf
 .champ-choice1, .champ-choice{
     
     width: 100px;
