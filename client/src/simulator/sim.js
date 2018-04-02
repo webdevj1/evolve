@@ -43,6 +43,7 @@ class Sim extends Component{
             counter: `http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champsData[alt].counters[0].champion}.png`, //gives the image of the counter champ on the right
             counterName: champsData[alt].counters[0].champion, //renders the counter champ's name under the picture on the right
             counterSplash: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champsData[alt].counters[0].champion}_0.jpg`
+        
         });
 
         axios.get('http://localhost:8000/itemsbuild')
@@ -96,32 +97,33 @@ class Sim extends Component{
 
     render(){
         const {champs, pick, pickName, counter, counterName, pickItems, counterItems, userInputChamp} = this.state;
+        let hide = !pickName?'none':'';
         return(
             <div>
 
-                <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a user or champions"/>
+                <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a user or champion"/>
                 <br/>
                 <br/>
                 <div className="allroles">
-                <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="" />
-                <img onClick={this.handleRoles} name="top" className='roles' src={top} />
-                <img onClick={this.handleRoles} name="mid" className='roles' src={mid} />       {/*  All of the lanes available  */}
-                <img onClick={this.handleRoles} name="support" className='roles' src={support} />
-                <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} />
-                <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} /> {" "}
+                    <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="" />
+                    <img onClick={this.handleRoles} name="top" className='roles' src={top} />
+                    <img onClick={this.handleRoles} name="mid" className='roles' src={mid} />       {/*  All of the lanes available  */}
+                    <img onClick={this.handleRoles} name="support" className='roles' src={support} />
+                    <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} />
+                    <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} /> {" "}
                 </div>
           
-        
+      
                 <div id="simulator">
                     <div className="choices">
                         <div className="goodWith">
-                        <div> <p>Your champion</p> </div>
-                            <div id="pick" className="info">    
+                        <div> <p className="itemname">Your champion</p> </div>
+                            <div id="pick">    
                                 <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
-                                <p>{pickName}</p>
+                                <p className="pickname">{pickName}</p>
                             </div>
                         </div>
-                        {pickItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
+                        {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
                         {pickItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
@@ -137,11 +139,11 @@ class Sim extends Component{
                     </div>
                     <div className="choices">
                         <div className="counter">
-                            <div> <p>Counter champion</p> </div>
+                            <div> <p className="itemname">Counter champion</p> </div>
                             <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' /> </p>
-                            <p className="counter">{counterName}</p>
+                            <p className="pickname">{counterName}</p>
                         </div>
-                        {counterItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''}
+                        {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
                         {counterItems.map(item=>{
                             if(!isNaN(Number(item))){
                                 return(
@@ -153,12 +155,8 @@ class Sim extends Component{
                 </div>
 
                 <h1>Item Build</h1>
-                <div id="simulator">
+                <div style={{display: hide}} id="simulator">
                     <div className="choices">
-                        <div className="goodWith">
-                        
-                           
-                        </div>
                         {pickItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
                         {pickItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
@@ -199,7 +197,7 @@ class Sim extends Component{
                     
                                              
 
-                                                        <a href="https://bufferapp.com/add?url=https://simplesharebuttons.com&amp;text=Simple Share Buttons" target="_blank">
+                        <a href="https://bufferapp.com/add?url=https://simplesharebuttons.com&amp;text=Simple Share Buttons" target="_blank">
 
                         <img src="https://simplesharebuttons.com/images/somacro/buffer.png" alt="Buffer" />
 
