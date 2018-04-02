@@ -96,6 +96,7 @@ class Sim extends Component{
 
     render(){
         const {champs, pick, pickName, counter, counterName, pickItems, counterItems, userInputChamp} = this.state;
+        let hide = !pickName?'none':'';
         return(
             <div>
 
@@ -103,15 +104,15 @@ class Sim extends Component{
                 <br/>
                 <br/>
                 <div className="allroles">
-                <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="" />
-                <img onClick={this.handleRoles} name="top" className='roles' src={top} />
-                <img onClick={this.handleRoles} name="mid" className='roles' src={mid} />       {/*  All of the lanes available  */}
-                <img onClick={this.handleRoles} name="support" className='roles' src={support} />
-                <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} />
-                <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} /> {" "}
+                    <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="" />
+                    <img onClick={this.handleRoles} name="top" className='roles' src={top} />
+                    <img onClick={this.handleRoles} name="mid" className='roles' src={mid} />       {/*  All of the lanes available  */}
+                    <img onClick={this.handleRoles} name="support" className='roles' src={support} />
+                    <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} />
+                    <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} /> {" "}
                 </div>
           
-        
+      
                 <div id="simulator">
                     <div className="choices">
                         <div className="goodWith">
@@ -153,12 +154,8 @@ class Sim extends Component{
                 </div>
 
                 <h1>Item Build</h1>
-                <div id="simulator">
+                <div style={{display: hide}} id="simulator">
                     <div className="choices">
-                        <div className="goodWith">
-                        
-                           
-                        </div>
                         {pickItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
                         {pickItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
@@ -199,7 +196,7 @@ class Sim extends Component{
                     
                                              
 
-                                                        <a href="https://bufferapp.com/add?url=https://simplesharebuttons.com&amp;text=Simple Share Buttons" target="_blank">
+                        <a href="https://bufferapp.com/add?url=https://simplesharebuttons.com&amp;text=Simple Share Buttons" target="_blank">
 
                         <img src="https://simplesharebuttons.com/images/somacro/buffer.png" alt="Buffer" />
 
