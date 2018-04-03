@@ -43,6 +43,7 @@ class Sim extends Component{
             counter: `http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champsData[alt].counters[0].champion}.png`, //gives the image of the counter champ on the right
             counterName: champsData[alt].counters[0].champion, //renders the counter champ's name under the picture on the right
             counterSplash: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champsData[alt].counters[0].champion}_0.jpg`
+        
         });
 
         axios.get('http://localhost:8000/itemsbuild')
@@ -100,7 +101,7 @@ class Sim extends Component{
         return(
             <div>
 
-                <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a user or champions"/>
+                <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a user or champion"/>
                 <br/>
                 <br/>
                 <div className="allroles">
@@ -119,10 +120,10 @@ class Sim extends Component{
                         <div> <p>Selected Champion</p> </div>
                             <div id="pick" className="info">    
                                 <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
-                                <p>{pickName}</p>
+                                <p className="pickname">{pickName}</p>
                             </div>
                         </div>
-                        {pickItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
+                        {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
                         {pickItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
@@ -142,7 +143,7 @@ class Sim extends Component{
                             <p style={{fontSize: '20px'}} ><img src={counter} alt='champ' className='champ-choice1' /> </p>
                             <p className="counter">{counterName}</p>
                         </div>
-                        {counterItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''}
+                        {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
                         {counterItems.map(item=>{
                             if(!isNaN(Number(item))){
                                 return(
