@@ -55,8 +55,8 @@ p{
     background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
     border-radius:15px;
 }
-.test{
-    display: none;
+.show{
+    color: pink
 }
 .champ-choice1, .champ-choice{
     width: 100px;

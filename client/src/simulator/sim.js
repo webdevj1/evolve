@@ -116,7 +116,7 @@ class Sim extends Component{
                 <div id="simulator">
                     <div className="choices">
                         <div className="goodWith">
-                        <div> <p>Your champion</p> </div>
+                        <div> <p>Selected Champion</p> </div>
                             <div id="pick" className="info">    
                                 <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
                                 <p>{pickName}</p>
@@ -138,8 +138,8 @@ class Sim extends Component{
                     </div>
                     <div className="choices">
                         <div className="counter">
-                            <div> <p>Counter champion</p> </div>
-                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' /> </p>
+                            <div> <p>Counter Champion</p> </div>
+                            <p style={{fontSize: '20px'}} ><img src={counter} alt='champ' className='champ-choice1' /> </p>
                             <p className="counter">{counterName}</p>
                         </div>
                         {counterItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''}
