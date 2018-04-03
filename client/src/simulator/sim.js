@@ -95,6 +95,11 @@ class Sim extends Component{
         
       }
 
+    handleItems = () =>{
+        let popup = document.getElementById('myPopup');
+        popup.classList.toggle('show');
+    }
+
     render(){
         const {champs, pick, pickName, counter, counterName, pickItems, counterItems, userInputChamp} = this.state;
         let hide = !pickName?'none':'';
@@ -105,20 +110,20 @@ class Sim extends Component{
                 <br/>
                 <br/>
                 <div className="allroles">
-                    <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="" />
-                    <img onClick={this.handleRoles} name="top" className='roles' src={top} />
-                    <img onClick={this.handleRoles} name="mid" className='roles' src={mid} />       {/*  All of the lanes available  */}
-                    <img onClick={this.handleRoles} name="support" className='roles' src={support} />
-                    <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} />
-                    <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} /> {" "}
+                    <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="all" />
+                    <img onClick={this.handleRoles} name="top" className='roles' src={top} alt="top"/>
+                    <img onClick={this.handleRoles} name="mid" className='roles' src={mid} alt="mid"/>       {/*  All of the lanes available  */}
+                    <img onClick={this.handleRoles} name="support" className='roles' src={support} alt="support"/>
+                    <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} alt="bot"/>
+                    <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} alt="jungle"/> {" "}
                 </div>
           
       
                 <div id="simulator">
                     <div className="choices">
                         <div className="goodWith">
-                        <div> <p className="itemname">Your champion</p> </div>
-                            <div id="pick">    
+                        <div> <p>Selected Champion</p> </div>
+                            <div id="pick" className="info">    
                                 <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
                                 <p className="pickname">{pickName}</p>
                             </div>
@@ -127,7 +132,13 @@ class Sim extends Component{
                         {pickItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
-                                    <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                    <div className='items_container' onMouseOver={this.handleItems} onMouseOut={this.handleItems} >
+                                        <div className='popup'>
+                                            <span className="popuptext" id="myPopup">Testing</span>
+                                            <img className={['items'].join(' ')} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                        </div>
+                                        
+                                    </div>
                                 )
                             }
                         })}
@@ -139,9 +150,9 @@ class Sim extends Component{
                     </div>
                     <div className="choices">
                         <div className="counter">
-                            <div> <p className="itemname">Counter champion</p> </div>
-                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' /> </p>
-                            <p className="pickname">{counterName}</p>
+                            <div> <p>Counter Champion</p> </div>
+                            <p style={{fontSize: '20px'}} ><img src={counter} alt='champ' className='champ-choice1' /> </p>
+                            <p className="counter">{counterName}</p>
                         </div>
                         {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
                         {counterItems.map(item=>{
@@ -260,16 +271,6 @@ class Sim extends Component{
                         <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
 
                         <img src="https://simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" />
-
-                        </a>
-
-
-
-
-
-                        <a href="javascript:;" onclick="window.print()">
-
-                        <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
 
                         </a>
 
