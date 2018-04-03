@@ -56,7 +56,6 @@ box-shadow:
     background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
     border-radius:15px;
 }
-<<<<<<< HEAD
  .pickname{
     text-shadow: 1px 1px 2px rgb(85, 77, 6), 0 0 1em rgb(85, 77, 6), 0 0 0.2em rgb(85, 77, 6);
     text-align: center;
@@ -75,11 +74,9 @@ box-shadow:
     background-color:rgb(14, 2, 0);
 } */ 
 
-=======
 .test{
     display: none;
 }
->>>>>>> 99596ead0544d6b1cb2303acc9cf72006d67ddbf
 .champ-choice1, .champ-choice{
     
     width: 100px;
