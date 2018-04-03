@@ -117,8 +117,8 @@ class Sim extends Component{
                 <div id="simulator">
                     <div className="choices">
                         <div className="goodWith">
-                        <div> <p>Selected Champion</p> </div>
-                            <div id="pick" className="info">    
+                        <div> <p className="itemname">Your champion</p> </div>
+                            <div id="pick">    
                                 <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
                                 <p className="pickname">{pickName}</p>
                             </div>
@@ -139,9 +139,9 @@ class Sim extends Component{
                     </div>
                     <div className="choices">
                         <div className="counter">
-                            <div> <p>Counter Champion</p> </div>
-                            <p style={{fontSize: '20px'}} ><img src={counter} alt='champ' className='champ-choice1' /> </p>
-                            <p className="counter">{counterName}</p>
+                            <div> <p className="itemname">Counter champion</p> </div>
+                            <p style={{fontSize: '20px'}} ><img onDragOver={this.handleOver} onDrop={this.handleDrop} src={counter} alt='champ' className='champ-choice1' /> </p>
+                            <p className="pickname">{counterName}</p>
                         </div>
                         {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
                         {counterItems.map(item=>{
