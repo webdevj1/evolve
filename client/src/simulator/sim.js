@@ -117,7 +117,7 @@ class Sim extends Component{
                 <div id="simulator">
                     <div className="choices">
                         <div className="goodWith">
-                        <div> <p className="itemname">Your champion</p> </div>
+                        <div> <p className="itemname">Selected Champion</p> </div>
                             <div id="pick">    
                                 <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
                                 <p className="pickname">{pickName}</p>
