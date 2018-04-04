@@ -55,8 +55,27 @@ p{
     background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
     border-radius:15px;
 }
-.show{
-    color: pink
+
+.pickname{
+    text-shadow: 1px 1px 2px rgb(85, 77, 6), 0 0 1em rgb(85, 77, 6), 0 0 0.2em rgb(85, 77, 6);
+    text-align: center;
+    font-family: 'Friz Quadrata Bold';
+    letter-spacing:1px;
+    
+}
+
+/* .itemname {
+    text-shadow: 1px 1px 2px rgb(24, 95, 209), 0 0 1em rgb(8, 79, 194), 0 0 0.2em rgb(17, 130, 175);
+    text-align: center;
+    font-family: 'Berkshire Swash', cursive;
+    letter-spacing:1px;
+    border:1px rgb(13, 43, 39) groove;
+    border-width: 10px 60px ;
+    background-color:rgb(14, 2, 0);
+} */ 
+
+.test{
+    display: none;
 }
 .champ-choice1, .champ-choice{
     width: 100px;

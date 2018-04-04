@@ -14,6 +14,7 @@ class Sim extends Component{
         this.state = {
             champsData: {},
             champs:[],
+            items: [],
             pick: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             pickName: '',
             pickItems: [],
@@ -28,10 +29,17 @@ class Sim extends Component{
     .then(res => {
         this.setState({
             champsData: res.data.data, // Importing the champ data
-            champs: Object.keys(res.data.data) //Grabs the champs names for their images
+            champs: Object.keys(res.data.data), //Grabs the champs names for their images
         });
     })
     .catch(err => console.log(err));
+    
+    axios.get('http://localhost:8000/items')
+    .then(res =>{
+        this.setState({
+            items: res.data.data
+        });
+    });
   }
 
     handleClick = e =>{
@@ -95,13 +103,16 @@ class Sim extends Component{
         
       }
 
-    handleItems = () =>{
-        let popup = document.getElementById('myPopup');
+    handleItems = (e) =>{
+        const {items} = this.state;
+        let key = e.target.alt
+        let popup = document.getElementById(key);
+        popup.innerHTML = `${items[key].name} <br/> <br/> ${items[key].plaintext}`;
         popup.classList.toggle('show');
     }
 
     render(){
-        const {champs, pick, pickName, counter, counterName, pickItems, counterItems, userInputChamp} = this.state;
+        const {champs, items, pick, pickName, counter, counterName, pickItems, counterItems, userInputChamp} = this.state;
         let hide = !pickName?'none':'';
         return(
             <div>
@@ -129,15 +140,15 @@ class Sim extends Component{
                             </div>
                         </div>
                         {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
-                        {pickItems.map(item=>{
+                        {pickItems.map((item, key)=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
-                                    <div className='items_container' onMouseOver={this.handleItems} onMouseOut={this.handleItems} >
+                                    <div className='items_container' >
                                         <div className='popup'>
-                                            <span className="popuptext" id="myPopup">Testing</span>
-                                            <img className={['items'].join(' ')} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                            <span className="popuptext" id={item}>
+                                            </span>
+                                            <img onMouseOver={this.handleItems} onMouseOut={this.handleItems} className={['items'].join(' ')} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
                                         </div>
-                                        
                                     </div>
                                 )
                             }
