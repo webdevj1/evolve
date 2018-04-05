@@ -18,6 +18,7 @@ class Sim extends Component{
             pick: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             pickName: '',
             pickItems: [],
+            counters: [],
             counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             counterName: '',
             counterItems: []
@@ -48,6 +49,7 @@ class Sim extends Component{
         this.setState({
             pick: e.target.src, //changing the empty square with the champ user clicked
             pickName: alt, //renders the clicked champ's name under the picture
+            counters: champsData[alt].counters,
             counter: `http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champsData[alt].counters[0].champion}.png`, //gives the image of the counter champ on the right
             counterName: champsData[alt].counters[0].champion, //renders the counter champ's name under the picture on the right
             counterSplash: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champsData[alt].counters[0].champion}_0.jpg`
@@ -107,12 +109,12 @@ class Sim extends Component{
         const {items} = this.state;
         let key = e.target.alt
         let popup = document.getElementById(key);
-        popup.innerHTML = `${items[key].name} <br/> <br/> ${items[key].plaintext}`;
+        popup.innerHTML = `${items[key].name} <br/> <br/> ${items[key].description}`;
         popup.classList.toggle('show');
     }
 
     render(){
-        const {champs, items, pick, pickName, counter, counterName, pickItems, counterItems, userInputChamp} = this.state;
+        const {champs, items, pick, pickName, counter, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
         let hide = !pickName?'none':'';
         return(
             <div>
@@ -167,48 +169,31 @@ class Sim extends Component{
                         </div>
                         {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
                         {counterItems.map(item=>{
-                            if(!isNaN(Number(item))){
+                            if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
-                                    <img className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                    <div className='items_container' >
+                                        <div className='popup'>
+                                            <span className="popuptext" id={item}>
+                                            </span>
+                                            <img onMouseOver={this.handleItems} onMouseOut={this.handleItems} className={['items'].join(' ')} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                        </div>
+                                    </div>
                                 )
                             }
                         })}
                     </div>
                 </div>
 
-                <h1>Item Build</h1>
-                <div style={{display: hide}} id="simulator">
-                    <div className="choices">
-                        {pickItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
-                        {pickItems.map(item=>{
-                            if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
-                                return(
-                                    <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
-                                )
-                            }
-                        })}
-                    </div>
-                    <div id="champs">   
-                    {counterItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''}
-                        {counterItems.map(item=>{
-                            if(!isNaN(Number(item))){
-                                return(
-                                    <img className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
-                                )
-                            }
-                        })}
-                    </div>
-                    <div className="choices">
-                      
-                        {counterItems.length > 0 ? <p style={{fontSize: '20px'}}>Suggested Item Build</p> : ''}
-                        {counterItems.map(item=>{
-                            if(!isNaN(Number(item))){
-                                return(
-                                    <img className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
-                                )
-                            }
-                        })}
-                    </div>
+                <div style={{display: hide}} id="art_container">                   
+                        {counters.slice(1).map(champ=>(
+                            <div className="more_choices">
+                                <div className="counter">
+                                <div> <p>Counter Champion</p> </div>
+                                <p style={{fontSize: '20px'}} ><img src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ.champion}.png`} alt='champ' className='champ-choice1' /> </p>
+                                <p className="counter">{champ.champion}</p>
+                                </div>
+                            </div>
+                        ))}        
                 </div>
 
                 <h1>Share This Site</h1>

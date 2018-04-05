@@ -118,7 +118,9 @@ p{
 .popup .popuptext {
     visibility: hidden;
     width: 160px;
-    background-color: #555;
+
+
+    background-color: #1e2e31;
     color: #fff;
     text-align: center;
     border-radius: 6px;
@@ -126,7 +128,7 @@ p{
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    left: 50%;
+    left: 80%;
     margin-left: -80px;
 }
 
@@ -248,3 +250,20 @@ p {
     height: 400px;
     margin-top: 40px;
 }
+
+#art_container{
+    display: flex;
+    justify-content:center;
+    width: 100%
+}
+.more_choices{
+    margin-top: 50px;
+    padding: 10px;
+    width: 250px;
+    height: 400px;
+    order: 0;
+    box-shadow: 0px 0px 5px #cb8;
+    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
+    border-radius:15px;
+}
+
