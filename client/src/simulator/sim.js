@@ -127,7 +127,9 @@ class Sim extends Component{
                         {pickItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
-                                    <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+       
+                                        <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item}/>
+                                     
                                 )
                             }
                         })}
