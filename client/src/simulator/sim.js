@@ -115,7 +115,9 @@ class Sim extends Component{
     render(){
         const {champs, items, pick, pickName, counter, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
         let hide = !pickName?'none':'';
-        let pickImage = `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pickName}_0.jpg')`;
+        
+        let pickImage = !pickName? `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")` : `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pickName}_0.jpg')`;
+        let counterImage = !counterName? `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")` : `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${counterName}_0.jpg')`;
         return(
             <div>
 
@@ -135,7 +137,7 @@ class Sim extends Component{
                 <div id="simulator">
                     <div style={{backgroundImage: pickImage}} className="choices">
                         <div className="goodWith">
-                        <div> <p>Selected Champion</p> </div>
+                        <div> <p>{!pickName? 'SELECT a CHAMPION':''}</p> </div>
                             <div id="pick" className="info">    
 
                                 <p className="pickname">{pickName}</p>
@@ -161,10 +163,10 @@ class Sim extends Component{
                             <img onClick={this.handleClick} className="choose grow" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
                         ))}       
                     </div>
-                    <div className="choices">
+                    <div style={{backgroundImage: counterImage}} className="choices">
                         <div className="counter">
                             <div> <p>Counter Champion</p> </div>
-                            <p style={{fontSize: '20px'}} ><img src={counter} alt='champ' className='champ-choice1' /> </p>
+
                             <p className="counter">{counterName}</p>
                         </div>
                         {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
@@ -183,7 +185,7 @@ class Sim extends Component{
                         })}
                     </div>
                 </div>
-                <h3 style={{display: hide}}>More Counters</h3>
+                <h2 style={{display: hide}}>More Counters</h2>
                 <div style={{display: hide}} id="art_container">                   
                         {counters.slice(1).map(champ=>(
                             <div className="more_counters">
