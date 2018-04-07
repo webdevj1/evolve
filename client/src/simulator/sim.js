@@ -52,7 +52,6 @@ class Sim extends Component{
             counters: champsData[alt].counters,
             counter: `http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champsData[alt].counters[0].champion}.png`, //gives the image of the counter champ on the right
             counterName: champsData[alt].counters[0].champion, //renders the counter champ's name under the picture on the right
-            counterSplash: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champsData[alt].counters[0].champion}_0.jpg`
         
         });
 
@@ -116,6 +115,7 @@ class Sim extends Component{
     render(){
         const {champs, items, pick, pickName, counter, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
         let hide = !pickName?'none':'';
+        let pickImage = `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pickName}_0.jpg')`;
         return(
             <div>
 
@@ -133,11 +133,11 @@ class Sim extends Component{
           
       
                 <div id="simulator">
-                    <div className="choices">
+                    <div style={{backgroundImage: pickImage}} className="choices">
                         <div className="goodWith">
                         <div> <p>Selected Champion</p> </div>
                             <div id="pick" className="info">    
-                                <p style={{fontSize: '20px'}}><img src={pick} alt='champ' className='champ-choice1' />{''}</p>
+
                                 <p className="pickname">{pickName}</p>
                             </div>
                         </div>
