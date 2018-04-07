@@ -121,7 +121,7 @@ class Sim extends Component{
         return(
             <div>
 
-                <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a champion"/>
+                <input onChange={this.handleInput} className="summonername" placeholder="Search for a champion"/>
                 <br/>
                 <br/>
                 <div className="allroles">
@@ -137,10 +137,9 @@ class Sim extends Component{
                 <div id="simulator">
                     <div style={{backgroundImage: pickImage}} className="choices">
                         <div className="goodWith">
-                        <div> <p>{!pickName ? "Click to select a Champion":""}</p> </div>
+                        <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName ? "Click to reveal a champion counter":"" }</div>
                             <div id="pick" className="info">    
-
-                                <p className="pickname">{pickName}</p>
+                                {pickName? <p className="pickname">{pickName}</p> : ''}
                             </div>
                         </div>
                         {/*{ {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked 
@@ -166,8 +165,8 @@ class Sim extends Component{
                     </div>
                     <div style={{backgroundImage: counterImage}} className="choices">
                         <div className="counter">
-
-                            <p className="counterpick">{counterName}</p>
+                        <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName? !pickName ? "Counter Pick":"" : ''}</div>
+                           {counterName? <p className="counterpick">{counterName}</p> : "" }
                         </div>
                         {/* {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} */}
                         {/* {counterItems.map(item=>{
@@ -197,7 +196,7 @@ class Sim extends Component{
                             </div>
                         ))}        
                 </div>
-                <div id="simulator">
+               
                     
                     <div id="champs2">   
                     
@@ -212,7 +211,7 @@ class Sim extends Component{
                         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
 
                         </a>
-                    </div>
+        
                    
                 </div>
                     

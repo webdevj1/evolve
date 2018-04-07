@@ -6,6 +6,8 @@
 
 
 #champs {
+    margin-right:5px;
+    margin-left:5px;
     border-radius: 15px;
     width: 700px;
     height:400px;
@@ -20,6 +22,7 @@
 }
 
 #champs2 {
+    position: relative;
     border-radius: 15px;
     width: 47px;
     height: 92px;
@@ -58,11 +61,11 @@
 }
 
 .pickname{
-    text-shadow: 1px 1px 2px rgb(32, 54, 63), 0 0 1em rgb(85, 77, 6), 0 0 0.2em rgb(85, 77, 6);
+    text-shadow: 2px 2px 2px rgb(32, 54, 63), 0 0 1em rgb(67, 61, 7), 0 0 0.2em rgb(63, 58, 5);
     text-align: center;
     font-family: 'Friz Quadrata Bold';
     letter-spacing: 1px;
-    margin-top: -56px;
+    margin-top: -51px;
     margin-left:29px;
 }
 
@@ -71,7 +74,7 @@
     text-align: center;
     font-family: 'Friz Quadrata Bold';
     letter-spacing: 1px;
-    margin-top: -31px;
+    margin-top: -51px;
     margin-left:29px;
     
 }
@@ -184,7 +187,8 @@
 }
 
 p {
-    font-size: 10px
+    font-size: 10px;
+    text-shadow: 1px 1px 2px rgb(32, 54, 63), 0 0 1em rgb(67, 61, 7), 0 0 0.2em rgb(63, 58, 5);
 }
 
 .roles {
@@ -289,6 +293,11 @@ p {
     border-radius: 15px;
 }
 
+.more_counters:hover {
+    transform: scale(1);
+}
+
+
 .more_counters {
     margin-top: -25px;
     text-align: center;
@@ -306,3 +315,18 @@ p {
     src: 
     url("../Font/Friz Quadrata Bold.otf") format("opentype")
     }
+
+
+.enemypick {
+    width: 240px;
+    font-size: 20px;
+    font-family: 'Friz Quadrata Bold', sans-serif;
+    letter-spacing: 1px;
+    border: 2px groove black;
+    color: white;
+    background-color: rgb(32, 54, 63);
+    margin-bottom: 0px;
+    margin-left: 24px;
+    border-radius: 15px;
+    margin-top: 20px;
+}    
