@@ -236,6 +236,7 @@ p {
     height: 100px;
     float: left;
     margin-top: 30px;
+    margin-left:17px;
 }
 
 h2 {
@@ -330,3 +331,39 @@ p {
     border-radius: 15px;
     margin-top: 20px;
 }    
+
+
+.container { 
+    width: 200px;
+    height: 260px;
+    position: relative;
+    perspective: 800px;
+  }
+
+  #card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+
+  #card figure {
+    margin: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  #card .front {
+    background: red;
+  }
+  #card .back {
+    background: blue;
+    transform: rotateY( 180deg );
+  }
+  #card.flipped {
+    transform: rotateY( 180deg );
+  }

@@ -198,11 +198,10 @@ class Sim extends Component{
                 </div>
                
                     
-                    <div id="champs2">   
-                    
+                    <div id="champs2">     
                         <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
 
-                        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+                      <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
 
                         </a>
 
@@ -211,10 +210,14 @@ class Sim extends Component{
                         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
 
                         </a>
-        
-                   
                 </div>
                     
+                <section class="container">
+  <div id="card">
+    <figure class="front">1</figure>
+    <figure class="back">2</figure>
+  </div>
+</section>
 
                 <button>Create Profile</button>
                             <br/>
