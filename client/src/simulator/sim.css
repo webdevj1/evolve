@@ -2,12 +2,11 @@
     display: flex;
     justify-content:center;
 }
+
 p{
     color: #efd;
 }
-.info{
-    left: 0%
-}
+
 
 #champs{
     border-radius:15px;
@@ -19,8 +18,34 @@ p{
     -moz-box-shadow: 0 0 5px #cb8;
     -webkit-box-shadow: 0 0 5px #cb8;
     box-shadow: 0px 0px 5px #cb8;
-    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")
+    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
 }
+
+.champs1{
+    border-radius:15px;
+    width: 700px;
+    height:200px;
+    overflow: scroll;
+    order: 0;
+    justify-content:center;
+    -moz-box-shadow: 0 0 5px #cb8;
+    -webkit-box-shadow: 0 0 5px #cb8;
+    box-shadow: 0px 0px 5px #cb8;
+    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
+}
+
+.notes{
+    justify-content:center;
+}
+.champs1 p{
+    width: 100%;
+}
+
+.champs1 h3{
+    color: white;
+}
+
+
 
 #champs2{
     border-radius:15px;
@@ -43,20 +68,43 @@ p{
     cursor: pointer;
     border-radius:10px;
     transition: all 1ms cubic-bezier(0.68, -0.75, 0.6, 1);
- box-shadow:
+box-shadow:
    0 0 40px 10px rgb(11, 139, 139);
 
 }
 .choices{
-    width: 250px;
+    width: 278px;
     height: 400px;
+    margin-right: 2px;
+    margin-left: 2px;
     order: 0;
     box-shadow: 0px 0px 5px #cb8;
     background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
     border-radius:15px;
 }
+ .pickname{
+    text-shadow: 1px 1px 2px rgb(85, 77, 6), 0 0 1em rgb(85, 77, 6), 0 0 0.2em rgb(85, 77, 6);
+    text-align: center;
+    font-family: 'Friz Quadrata Bold';
+    letter-spacing:1px;
+    
+}
 
+/* .itemname {
+    text-shadow: 1px 1px 2px rgb(24, 95, 209), 0 0 1em rgb(8, 79, 194), 0 0 0.2em rgb(17, 130, 175);
+    text-align: center;
+    font-family: 'Berkshire Swash', cursive;
+    letter-spacing:1px;
+    border:1px rgb(13, 43, 39) groove;
+    border-width: 10px 60px ;
+    background-color:rgb(14, 2, 0);
+} */ 
+
+.test{
+    display: none;
+}
 .champ-choice1, .champ-choice{
+    
     width: 100px;
     height: 100px;
     -moz-box-shadow: 0 0 5px #cb8;
@@ -66,34 +114,32 @@ p{
 }
 
 
-.counter{
-   text-align: center;
-   font-family: 'Oswald', sans-serif;
-   letter-spacing:1px;
-
-   
-}
-
 .items{
     width: 40px;
-    height: 40px
+    height: 40px;
+    padding:3px;
+}
+
+.items:hover {
+    transform: scale(1.5);
+    box-shadow: 0px 0px 5px #cb8;
+    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")
 }
 
 p{
-    font-size: 10px
-    
+    font-size: 10px;
+
 }
 .roles{
     width: 50px;
     height: 50px;
     background-color:black;
-    opacity: 0.9;
-  border-radius: 25px;
+    margin:1px;
+    border-radius:15px;
 }
 .roles:hover{
-    background-color:whitesmoke;
-    border-radius: 70%;
-    transition: all 5ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
+    background-color:rgb(3, 102, 97);
+    transition: all 1ms cubic-bezier(0.68, -0.75, 0.1, 1);
  box-shadow:
    0 0 30px 15px silver,
    0 0 500px 20px #0ff;
@@ -110,10 +156,10 @@ p{
     border-radius:15px; 
     color:white;
     font-size:25px;
-    font-weight:100%;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Friz Quadrata Bold', sans-serif;
     margin-bottom:29px;
     letter-spacing:1px;
+    text-align:center;
 }
 
 .summonername:hover {
@@ -122,7 +168,7 @@ p{
  transition: all 1ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
  box-shadow:
    0 0 10px 1px #fff,
-   0 0 500px 20px #0ff;
+   0 0 200px 20px seagreen;
    color:black;
 }
 
@@ -132,6 +178,7 @@ width:280px;
 height:100px;
 float:left;
 margin-top: 30px;
+
 
 }
 
@@ -160,3 +207,86 @@ p {
     height: 400px;
     margin-top: 40px;
 }
+
+.info {
+    font-family:"Friz Quadrata Bold";
+    border-radius:15px;
+    width: 700px;
+    height:400px;
+    overflow: scroll;
+    order: 0;
+    display:flex;
+    justify-content:center;
+    -moz-box-shadow: 0 0 5px #cb8;
+    -webkit-box-shadow: 0 0 5px #cb8;
+    box-shadow: 0px 0px 5px #cb8;
+    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
+    margin-left: 373px;
+    margin-top: 41px;
+    background-blend-mode: darken;
+}
+
+
+@font-face {
+    font-family: "Friz Quadrata Bold";
+    src: 
+    url("../Font/Friz Quadrata Bold.otf") format("opentype")
+    }
+    
+    
+    .popup {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    
+    /* =====  The actual popup ====*/
+    .popup .popuptext {
+        visibility: hidden;
+        width: 160px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -80px;
+    }
+    
+    /* Popup arrow */
+    .popup .popuptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+    
+    /* Toggle this class - hide and show the popup */
+    .popup .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 0.5s;
+        animation: fadeIn 0.5s;
+    }
+    
+    /* Add animation (fade in the popup) */
+    @-webkit-keyframes fadeIn {
+        from {opacity: 0;} 
+        to {opacity: 1;}
+    }
+    
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity:1 ;}
+    }
