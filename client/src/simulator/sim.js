@@ -115,11 +115,13 @@ class Sim extends Component{
     render(){
         const {champs, items, pick, pickName, counter, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
         let hide = !pickName?'none':'';
-        let pickImage = `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pickName}_0.jpg')`;
+        
+        let pickImage = !pickName? `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")` : `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pickName}_0.jpg')`;
+        let counterImage = !counterName? `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")` : `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${counterName}_0.jpg')`;
         return(
             <div>
 
-                <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a user or champion"/>
+                <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a champion"/>
                 <br/>
                 <br/>
                 <div className="allroles">
@@ -161,11 +163,10 @@ class Sim extends Component{
                             <img onClick={this.handleClick} className="choose grow" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
                         ))}       
                     </div>
-                    <div className="choices">
+                    <div style={{backgroundImage: counterImage}} className="choices">
                         <div className="counter">
-                            <div> <p>Counter Champion</p> </div>
-                            <p style={{fontSize: '20px'}} ><img src={counter} alt='champ' className='champ-choice1' /> </p>
-                            <p className="counter">{counterName}</p>
+
+                            <p className="counterpick">{counterName}</p>
                         </div>
                         {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
                         {counterItems.map(item=>{

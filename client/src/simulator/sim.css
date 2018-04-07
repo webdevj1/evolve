@@ -15,14 +15,15 @@ p {
 #champs {
     border-radius: 15px;
     width: 700px;
-    height: 400px;
-    overflow: scroll;
+    height:400px;
+    overflow: auto;
     order: 0;
     justify-content: center;
     -moz-box-shadow: 0 0 5px #cb8;
     -webkit-box-shadow: 0 0 5px #cb8;
     box-shadow: 0px 0px 5px #cb8;
-    background-image: url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")
+
+    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")
 }
 
 #champs2 {
@@ -54,7 +55,7 @@ p {
 }
 
 .choices {
-    width: 250px;
+    width: 300px;
     height: 400px;
     order: 0;
     box-shadow: 0px 0px 5px #cb8;
@@ -63,12 +64,23 @@ p {
     background-image: 100% 100%;
 }
 
-.pickname {
+.pickname{
     text-shadow: 1px 1px 2px rgb(85, 77, 6), 0 0 1em rgb(85, 77, 6), 0 0 0.2em rgb(85, 77, 6);
     text-align: center;
     font-family: 'Friz Quadrata Bold';
     letter-spacing: 1px;
     margin-top: -56px;
+    margin-left:29px;
+}
+
+.counterpick {
+    text-shadow: 1px 1px 2px rgb(85, 77, 6), 0 0 1em rgb(85, 77, 6), 0 0 0.2em rgb(85, 77, 6);
+    text-align: center;
+    font-family: 'Friz Quadrata Bold';
+    letter-spacing: 1px;
+    margin-top: -31px;
+    margin-left:29px;
+    
 }
 
 /* .itemname {
@@ -95,11 +107,11 @@ p {
     background-image: url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")
 }
 
-.counter {
+/* .counter {
     text-align: center;
     font-family: 'Oswald', sans-serif;
     letter-spacing: 1px;
-}
+} */
 
 .items_container {
     display: inline;
@@ -198,6 +210,7 @@ p {
 }
 
 .summonername {
+    text-align: center;
     width: 650px;
     height: 40px;
     margin-top: 100px;
