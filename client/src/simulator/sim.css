@@ -4,13 +4,6 @@
     
 }
 
-p {
-    color: #efd;
-}
-
-.info {
-    left: 0%
-}
 
 #champs {
     border-radius: 15px;
@@ -221,7 +214,7 @@ p {
     color: white;
     font-size: 25px;
     font-weight: 100%;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Friz Quadrata Bold', sans-serif;
     margin-bottom: 29px;
     letter-spacing: 1px;
 }
@@ -256,7 +249,7 @@ h3 {
 p {
     width: 240px;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Friz Quadrata Bold', sans-serif;
     letter-spacing: 1px;
     border: 2px groove black;
     color: white;
@@ -299,6 +292,17 @@ p {
 .more_counters {
     margin-top: -25px;
     text-align: center;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Friz Quadrata Bold', sans-serif;
     letter-spacing: 1px;
 }
+
+.morecounters {
+    margin-left: 592px;
+    margin-bottom: 40px;
+}
+
+@font-face {
+    font-family: "Friz Quadrata Bold";
+    src: 
+    url("../Font/Friz Quadrata Bold.otf") format("opentype")
+    }

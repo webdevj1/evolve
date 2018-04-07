@@ -143,9 +143,10 @@ class Sim extends Component{
                                 <p className="pickname">{pickName}</p>
                             </div>
                         </div>
-                        {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
+                        {/*{ {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked 
                         {pickItems.map((item, key)=>{
-                            if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
+                            if(!isNaN(Number(item)))
+                            { //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
                                     <div className='items_container' >
                                         <div className='popup'>
@@ -156,7 +157,7 @@ class Sim extends Component{
                                     </div>
                                 )
                             }
-                        })}
+                        })} */}
                     </div>
                     <div id="champs">   
                         {champs.map((champ, key)=>(
@@ -168,7 +169,7 @@ class Sim extends Component{
 
                             <p className="counterpick">{counterName}</p>
                         </div>
-                        {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
+                        {/* {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} */}
                         {counterItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
@@ -184,7 +185,7 @@ class Sim extends Component{
                         })}
                     </div>
                 </div>
-                <h3 style={{display: hide}}>Additional Counters</h3>
+                <p className="morecounters" style={{display: hide}}>Additional Counters</p>
                 <div style={{display: hide}} id="art_container">                   
                         {counters.slice(1).map(champ=>(
                             <div className="more_counters">
