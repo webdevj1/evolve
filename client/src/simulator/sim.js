@@ -6,11 +6,13 @@ import bottom from "../images/Roles/Bottom_icon.png"
 import jungle from "../images/Roles/Jungle_icon.png"
 import allChamps from "../images/Roles/Fill_Icon.png"
 import support from "../images/Roles/Support_Icon.png"
+import {database} from "../firebase.js"
+import _ from 'lodash';
 
 
 class Sim extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             champsData: {},
             champs:[],
@@ -21,20 +23,57 @@ class Sim extends Component{
             counters: [],
             counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             counterName: '',
-            counterItems: []
+            counterItems: [],
+            title: '',
+            body: '',
+            notes: ''
         };
+        //bind handler 
+        this.handleChange= this.handleChange.bind(this);
+        this.handleSubmit= this.handleSubmit.bind(this);
+        this.renderNotes = this.renderNotes.bind(this);
+    }
+    // handle chang for usernotes
+    handleChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+            
+        })
+        console.log(e.target.value)
     }
 
-  componentDidMount() {
-    axios.get('http://localhost:8000')
-    .then(res => {
+    // handle submit
+    handleSubmit(e){
+        e.preventDefault()
+        console.log('submit clicked');
+        const note ={
+            title:this.state.title,
+            body:this.state.body
+        }
+        database.push(note);
         this.setState({
-            champsData: res.data.data, // Importing the champ data
-            champs: Object.keys(res.data.data), //Grabs the champs names for their images
-        });
-    })
-    .catch(err => console.log(err));
-    
+            title:'',
+            body:''
+            
+        })
+    }
+    //lifeCycle
+  componentDidMount() {
+   
+        axios.get('http://localhost:8000')
+        .then(res => {
+            this.setState({
+                champsData: res.data.data, // Importing the champ data
+                champs: Object.keys(res.data.data) //Grabs the champs names for their images
+            });
+        })
+        .catch(err => console.log(err));
+
+        database.on('value', snapshot =>{
+            //go to database listen on value and get snapshot of data
+            this.setState({notes: snapshot.val()});
+            });
+            
     axios.get('http://localhost:8000/items')
     .then(res =>{
         this.setState({
@@ -103,6 +142,19 @@ class Sim extends Component{
         })
         
       }
+      //render usernotes from database
+      renderNotes(){
+                //_lodash.map(collection, callbackfunction(note, key))
+        return _.map(this.state.notes, (note, key)=>{
+                return(
+                    
+                    <div key={key} className="champs1" > 
+                        <h3>{note.title}</h3>
+                        <p>{note.body}</p>
+                    </div>
+                )
+        });
+      }
 
     handleItems = (e) =>{
         const {items} = this.state;
@@ -121,7 +173,7 @@ class Sim extends Component{
         return(
             <div>
 
-                <input onChange={this.handleInput} width="500px" className="summonername" placeholder="Search for a champion"/>
+                <input onChange={this.handleInput} className="summonername" placeholder="Search for a champion"/>
                 <br/>
                 <br/>
                 <div className="allroles">
@@ -137,7 +189,7 @@ class Sim extends Component{
                 <div id="simulator">
                     <div style={{backgroundImage: pickImage}} className="choices">
                         <div className="goodWith">
-                        <div>{!pickName? <p>{!pickName ? "Click to select a Champion":""}</p> : ''}</div>
+                        <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName ? "Click to reveal a champion counter":"" }</div>
                             <div id="pick" className="info">    
                                 {pickName? <p className="pickname">{champsData[pickName].name}</p> : ''}
                             </div>
@@ -147,6 +199,9 @@ class Sim extends Component{
                             if(!isNaN(Number(item)))
                             { //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
+       
+                                        <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item}/>
+                                     
                                     <div className='items_container' >
                                         <div className='popup'>
                                             <span className="popuptext" id={item}>
@@ -165,8 +220,8 @@ class Sim extends Component{
                     </div>
                     <div style={{backgroundImage: counterImage}} className="choices">
                         <div className="counter">
-                        <div  >{!pickName? <p>{!pickName ? "Counter Champion":""}</p> : ''}</div>
-                            {counterName? <p className="counterpick">{champsData[counterName].name}</p> : ''}
+                        <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName? !pickName ? "Counter Pick":"" : ''}</div>
+                           {counterName? <p className="counterpick">{champsData[counterName].name}</p> : "" }
                         </div>
                         {/* {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} */}
                         {/* {counterItems.map(item=>{
@@ -216,9 +271,52 @@ class Sim extends Component{
                 </div>
                     
 
-                <button>Create Profile</button>
                             <br/>
-                            <p></p>
+                            <div className="container-fluid">
+                                <div className="row">
+                                    <div className="col-sm-6 col-sm-offset-3">
+                                        <form onSubmit={this.handleSubmit}>
+                                        <div className="form-group">
+                                                <input
+                                                onChange={this.handleChange} 
+                                                value={this.state.title}
+                                                type="text" 
+                                                name="title" 
+                                                className="form-control no-border" 
+                                                placeholder="TITLE of EVOLVE Player Note..."
+                                                required
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <textarea 
+                                                onChange={this.handleChange}
+                                                value={this.state.body}
+                                                type="text" 
+                                                name="body" 
+                                                className="form-control no-border" 
+                                                placeholder="What did you learn so far for your next match..."
+                                                required
+                                                />
+                                            </div>
+
+                                            <div className="form-group">
+                                                <button className="btn btn-primary col-sm-12">
+                                                    save
+                                                </button>
+
+                                            </div>
+
+                                        </form>
+                                        <div className="notes">
+                                        {this.renderNotes()}
+
+                                        </div>
+                                    </div>
+
+                                    <br/>
+                                </div>
+
+                            </div>
             </div>
     );
   };

@@ -830,7 +830,7 @@ module.exports = {
                     'role': 'support'
                 },
                 {
-                    "champion": 'Rakin',
+                    "champion": 'Rakan',
                     'win': '46.96%',
                     'role': 'support'
                 },
