@@ -13,7 +13,7 @@ class Lang extends Component{
                 <h1>Starting LoL terminology page!</h1>
                 <h1>GANK</h1>
                 <p> When a team is able to catch their opponent off guard with a surprise attack </p>
-                <img width='800px' height='400px' src={gank} />
+                <img width='800px' height='400px' src={gank} alt="gank"/>
             </div>
         )
     }

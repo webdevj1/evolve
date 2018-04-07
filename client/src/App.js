@@ -4,8 +4,8 @@ import './App.css';
 import Sim from './simulator/sim.js';
 import './simulator/sim.css';
 import evolve from "./images/Evolve.png";
-import Lang from './Lang/lang.js';
-import './Lang/lang.css'
+import MoreInfo from './champInfo/champInfo.js';
+
 
 
 class App extends Component {
@@ -13,11 +13,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Link to="/"><img alt="" src={evolve} className="Logo"/></Link>
-        <Link to='/language' > LoL Terminology </Link>
+        <Link to="/"><img alt="EVOLVE" src={evolve} className="Logo"/></Link>
+
         <Switch>
           <Route exact path='/' component={Sim} />
-          <Route path='/language' component={Lang} />
+          <Route path='/champions'  component={MoreInfo} />
         </Switch>
       </div>
     );
