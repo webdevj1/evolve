@@ -137,7 +137,7 @@ class Sim extends Component{
                 <div id="simulator">
                     <div style={{backgroundImage: pickImage}} className="choices">
                         <div className="goodWith">
-                        <div> <p>{!pickName ? "Select a Champion":""}</p> </div>
+                        <div> <p>{!pickName ? "Click to select a Champion":""}</p> </div>
                             <div id="pick" className="info">    
 
                                 <p className="pickname">{pickName}</p>
@@ -170,7 +170,7 @@ class Sim extends Component{
                             <p className="counterpick">{counterName}</p>
                         </div>
                         {/* {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} */}
-                        {counterItems.map(item=>{
+                        {/* {counterItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
                                     <div className='items_container' >
@@ -182,7 +182,7 @@ class Sim extends Component{
                                     </div>
                                 )
                             }
-                        })}
+                        })} */}
                     </div>
                 </div>
                 <p className="morecounters" style={{display: hide}}>Additional Counters</p>
@@ -190,7 +190,7 @@ class Sim extends Component{
                         {counters.slice(1).map(champ=>(
                             <div className="more_counters">
                                 <p>{champ.champion}</p>
-                                <div style={{backgroundImage: `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.champion}_0.jpg')`}} className="more_choices">
+                                <div style={{backgroundImage: `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.champion}_0.jpg')`}} className="more_choices grow">
                                     
                                     
                                 </div>
