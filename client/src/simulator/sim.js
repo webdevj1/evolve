@@ -183,14 +183,14 @@ class Sim extends Component{
                         })}
                     </div>
                 </div>
-
+                <h3 style={{display: hide}}>More Counters</h3>
                 <div style={{display: hide}} id="art_container">                   
                         {counters.slice(1).map(champ=>(
-                            <div className="more_choices">
-                                <div className="counter">
-                                <div> <p>Counter Champion</p> </div>
-                                <p style={{fontSize: '20px'}} ><img src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ.champion}.png`} alt='champ' className='champ-choice1' /> </p>
-                                <p className="counter">{champ.champion}</p>
+                            <div className="more_counters">
+                                <p>{champ.champion}</p>
+                                <div style={{backgroundImage: `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.champion}_0.jpg')`}} className="more_choices">
+                                    
+                                    
                                 </div>
                             </div>
                         ))}        
