@@ -6,11 +6,13 @@ import bottom from "../images/Roles/Bottom_icon.png"
 import jungle from "../images/Roles/Jungle_icon.png"
 import allChamps from "../images/Roles/Fill_Icon.png"
 import support from "../images/Roles/Support_Icon.png"
+import {database} from "../firebase.js"
+import _ from 'lodash'
 
 
 class Sim extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             champsData: {},
             champs:[],
@@ -19,20 +21,58 @@ class Sim extends Component{
             pickItems: [],
             counter: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png',
             counterName: '',
-            counterItems: []
+            counterItems: [],
+            title: '',
+            body: '',
+            notes: ''
         };
+        //bind handler 
+        this.handleChange= this.handleChange.bind(this);
+        this.handleSubmit= this.handleSubmit.bind(this);
+        this.renderNotes = this.renderNotes.bind(this);
+    }
+    // handle chang for usernotes
+    handleChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+            
+        })
+        console.log(e.target.value)
     }
 
-  componentDidMount() {
-    axios.get('http://localhost:8000')
-    .then(res => {
+    // handle submit
+    handleSubmit(e){
+        e.preventDefault()
+        console.log('submit clicked');
+        const note ={
+            title:this.state.title,
+            body:this.state.body
+        }
+        database.push(note);
         this.setState({
-            champsData: res.data.data, // Importing the champ data
-            champs: Object.keys(res.data.data) //Grabs the champs names for their images
-        });
-    })
-    .catch(err => console.log(err));
-  }
+            title:'',
+            body:''
+            
+        })
+    }
+    //lifeCycle
+  componentDidMount() {
+   
+        axios.get('http://localhost:8000')
+        .then(res => {
+            this.setState({
+                champsData: res.data.data, // Importing the champ data
+                champs: Object.keys(res.data.data) //Grabs the champs names for their images
+            });
+        })
+        .catch(err => console.log(err));
+
+        database.on('value', snapshot =>{
+            //go to database listen on value and get snapshot of data
+            this.setState({notes: snapshot.val()});
+            });
+        
+    }
 
     handleClick = e =>{
         const {champsData} = this.state;
@@ -93,6 +133,19 @@ class Sim extends Component{
             }
         })
         
+      }
+      //render usernotes from database
+      renderNotes(){
+                //_lodash.map(collection, callbackfunction(note, key))
+        return _.map(this.state.notes, (note, key)=>{
+                return(
+                    
+                    <div key={key} className="champs1" > 
+                        <h3>{note.title}</h3>
+                        <p>{note.body}</p>
+                    </div>
+                )
+        });
       }
 
     render(){
@@ -219,7 +272,7 @@ class Sim extends Component{
 
 
 
-                        <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com">
+                        <a href="mailto:?Subject=Your going to love this Evolve app @ wwww.evolveyourgameplay.com &amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://www.evolveyourgameplay.com">
 
                         <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
 
@@ -249,31 +302,12 @@ class Sim extends Component{
 
 
 
-                        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
-
-                        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
-
-                        </a>
-
-
-
-
-
                         <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
 
                         <img src="https://simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" />
 
                         </a>
 
-
-
-
-
-                        <a href="javascript:;" onclick="window.print()">
-
-                        <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
-
-                        </a>
 
 
 
@@ -319,21 +353,7 @@ class Sim extends Component{
 
 
 
-                        <a href="http://vkontakte.ru/share.php?url=https://simplesharebuttons.com" target="_blank">
-
-                        <img src="https://simplesharebuttons.com/images/somacro/vk.png" alt="VK" />
-
-                        </a>
-
-
-
-
-
-                        <a href="http://www.yummly.com/urb/verify?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
-
-                        <img src="https://simplesharebuttons.com/images/somacro/yummly.png" alt="Yummly" />
-
-                        </a>
+                       
 
                     </div>
                    
@@ -341,9 +361,53 @@ class Sim extends Component{
                             <br/>
                 <h1>SAVE YOUR PROGRESS</h1>
 
-                <button>Create Profile</button>
                             <br/>
-                            <p></p>
+                            <div className="container-fluid">
+                                <div className="row">
+                                    <div className="col-sm-6 col-sm-offset-3">
+                                        <form onSubmit={this.handleSubmit}>
+                                        <div className="form-group">
+                                                <input
+                                                onChange={this.handleChange} 
+                                                value={this.state.title}
+                                                type="text" 
+                                                name="title" 
+                                                className="form-control no-border" 
+                                                placeholder="TITLE of EVOLVE Player Note..."
+                                                required
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <textarea 
+                                                onChange={this.handleChange}
+                                                value={this.state.body}
+                                                type="text" 
+                                                name="body" 
+                                                className="form-control no-border" 
+                                                placeholder="What did you learn so far for your next match..."
+                                                required
+                                                />
+                                            </div>
+
+                                            <div className="form-group">
+                                                <button className="btn btn-primary col-sm-12">
+                                                    save
+                                                </button>
+                                                <button>Create Profile</button>
+
+                                            </div>
+
+                                        </form>
+                                        <div className="notes">
+                                        {this.renderNotes()}
+
+                                        </div>
+                                    </div>
+
+                                    <br/>
+                                </div>
+
+                            </div>
             </div>
     );
   };
