@@ -173,7 +173,7 @@ module.exports = {
                     'win': '43.42%'
                 },
                 {
-                    "champion": "Cho'Gath",
+                    "champion": "Chogath",
                     'win': '43.96%'
             }],
             "image": {
@@ -1135,11 +1135,11 @@ module.exports = {
                     'win': '44.27%'
                 },
                 {
-                    "champion": "Cho'Gath",
+                    "champion": "Chogath",
                     'win': '44.31%'
                 },
                 {
-                    "champion": 'Dr. Mundo',
+                    "champion": 'DrMundo',
                     'win': '45.35%'
             }],
             "image": {
@@ -1274,7 +1274,7 @@ module.exports = {
                 'win': '44.49%'
             },
             {
-                "champion": "Dr. Mundo",
+                "champion": "DrMundo",
                 'win': '45.10%'
             },
             {
@@ -1894,7 +1894,7 @@ module.exports = {
                 'win': '47.07%'
             },
             {
-                "champion": 'KaiSa',
+                "champion": 'Kaisa',
                 'win': '47.44%'
             },
             {
@@ -3222,7 +3222,7 @@ module.exports = {
                     'win': '42.91%'
                 },
                 {
-                    "champion": 'KaiSa',
+                    "champion": 'Kaisa',
                     'win': '43.51%'
                 },
                 {
@@ -3292,7 +3292,7 @@ module.exports = {
                     'win': '48.03%'
                 },
                 {
-                    "champion": 'KaiSa',
+                    "champion": 'Kaisa',
                     'win': '49.19%'
                 },
                 {
@@ -3442,7 +3442,7 @@ module.exports = {
                     'win': '40.53%'
                 },
                 {
-                    "champion": 'KaiSa',
+                    "champion": 'Kaisa',
                     'win': '41.17%'
             }],
             "image": {
@@ -7068,7 +7068,7 @@ module.exports = {
                 'win': '48.68%'
             },
             {
-                "champion": "Cho'Gath",
+                "champion": "Chogath",
                 'win': '48.69%'
             },
             {
@@ -7833,7 +7833,7 @@ module.exports = {
                 'win': '42.14%'
             },
             {
-                "champion": "Cho'Gath",
+                "champion": "Chogath",
                 'win': '45.82%'
             },
             {
