@@ -137,16 +137,15 @@ class Sim extends Component{
                 <div id="simulator">
                     <div style={{backgroundImage: pickImage}} className="choices">
                         <div className="goodWith">
-                        <div> <p>{!pickName ? "Select a Champion":""}</p> </div>
+                        <div> <p>{!pickName? 'SELECT a CHAMPION':''}</p> </div>
                             <div id="pick" className="info">    
 
                                 <p className="pickname">{pickName}</p>
                             </div>
                         </div>
-                        {/*{ {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked 
+                        {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked */}
                         {pickItems.map((item, key)=>{
-                            if(!isNaN(Number(item)))
-                            { //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
+                            if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
                                     <div className='items_container' >
                                         <div className='popup'>
@@ -157,7 +156,7 @@ class Sim extends Component{
                                     </div>
                                 )
                             }
-                        })} */}
+                        })}
                     </div>
                     <div id="champs">   
                         {champs.map((champ, key)=>(
@@ -166,10 +165,11 @@ class Sim extends Component{
                     </div>
                     <div style={{backgroundImage: counterImage}} className="choices">
                         <div className="counter">
+                            <div> <p>Counter Champion</p> </div>
 
-                            <p className="counterpick">{counterName}</p>
+                            <p className="counter">{counterName}</p>
                         </div>
-                        {/* {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} */}
+                       {/* {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
                         {counterItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
@@ -185,7 +185,7 @@ class Sim extends Component{
                         })}
                     </div>
                 </div>
-                <p className="morecounters" style={{display: hide}}>Additional Counters</p>
+                <h2 style={{display: hide}}>More Counters</h2>
                 <div style={{display: hide}} id="art_container">                   
                         {counters.slice(1).map(champ=>(
                             <div className="more_counters">
@@ -197,25 +197,146 @@ class Sim extends Component{
                             </div>
                         ))}        
                 </div>
+
+                <h1>Share This Site</h1>
+
                 <div id="simulator">
                     
                     <div id="champs2">   
                     
+                                             
+
+                        <a href="https://bufferapp.com/add?url=https://simplesharebuttons.com&amp;text=Simple Share Buttons" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/buffer.png" alt="Buffer" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://www.digg.com/submit?url=https://simplesharebuttons.com" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" />
+
+                        </a>
+
+
+
+
+
+                        <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+
+                        </a>
+
+
+
+
+
                         <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
 
                         <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
 
                         </a>
 
+
+
+
+
+                        <a href="https://plus.google.com/share?url=https://simplesharebuttons.com" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+
+                        </a>
+
+
+
+
+
+                        <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://reddit.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://www.stumbleupon.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/stumbleupon.png" alt="StumbleUpon" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://www.tumblr.com/share/link?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/tumblr.png" alt="Tumblr" />
+
+                        </a>
+
+
+
+
+
                         <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
 
                         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
 
                         </a>
+
+
+
+
+
+                        <a href="http://vkontakte.ru/share.php?url=https://simplesharebuttons.com" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/vk.png" alt="VK" />
+
+                        </a>
+
+
+
+
+
+                        <a href="http://www.yummly.com/urb/verify?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+
+                        <img src="https://simplesharebuttons.com/images/somacro/yummly.png" alt="Yummly" />
+
+                        </a>
+
                     </div>
                    
                 </div>
-                    
+                            <br/>
+                <h1>SAVE YOUR PROGRESS</h1>
 
                 <button>Create Profile</button>
                             <br/>
