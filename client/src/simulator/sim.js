@@ -7,7 +7,7 @@ import jungle from "../images/Roles/Jungle_icon.png"
 import allChamps from "../images/Roles/Fill_Icon.png"
 import support from "../images/Roles/Support_Icon.png"
 import {database} from "../firebase.js"
-import _ from 'lodash'
+import _ from 'lodash';
 
 
 class Sim extends Component{
@@ -85,6 +85,7 @@ class Sim extends Component{
     handleClick = e =>{
         const {champsData} = this.state;
         let alt = e.target.alt; //champ's name
+        
         this.setState({
             pick: e.target.src, //changing the empty square with the champ user clicked
             pickName: alt, //renders the clicked champ's name under the picture
@@ -142,6 +143,7 @@ class Sim extends Component{
         })
         
       }
+
       //render usernotes from database
       renderNotes(){
                 //_lodash.map(collection, callbackfunction(note, key))
@@ -163,6 +165,16 @@ class Sim extends Component{
         popup.innerHTML = `${items[key].name} <br/> <br/> ${items[key].description}`;
         popup.classList.toggle('show');
     }
+
+    // handleFlip = e =>{
+    //     let flip = e.target.classList;
+    //     flip.toggle('flip-vertical-right');
+    //     e.target.style.backgroundImage = `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")`;
+    //     let all = document.querySelectorAll('.items_container');
+    //     all.forEach(el=>{
+    //         el.style.display = 'inline';
+    //     })
+    // }
 
     render(){
         const {champsData, champs, items, pick, pickName, counter, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
@@ -187,7 +199,7 @@ class Sim extends Component{
           
       
                 <div id="simulator">
-                    <div style={{backgroundImage: pickImage}} className="choices">
+                    <div style={{backgroundImage: pickImage}} className={["choices"].join(' ')}>
                         <div className="goodWith">
                         <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName ? "Click to reveal a champion counter":"" }</div>
                             <div id="pick" className="info">    
@@ -196,9 +208,8 @@ class Sim extends Component{
                         </div>
                         {pickItems.length > 0 ? <p className="itemname">Suggested Item Build </p> : ''}
                         {pickItems.map((item, key)=>{
-                            console.log(item)
-                            if(!isNaN(Number(item)))
-                            { //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
+
+                            if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
                                     <div className='items_container' >
                                         <div className='popup'>
@@ -241,7 +252,7 @@ class Sim extends Component{
                 <div style={{display: hide}} id="art_container">                   
                         {counters.slice(1).map(champ=>(
                             <div className="more_counters">
-                                <p>{champ.champion}</p>
+                                <p>{champsData[champ.champion].name}</p>
                                 <div style={{backgroundImage: `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.champion}_0.jpg')`}} className="more_choices grow">
                                     
                                     
@@ -264,7 +275,7 @@ class Sim extends Component{
 
                         </a>
                 </div>
-    
+
                 <br/>
 
 <div className="container-fluid">
@@ -346,7 +357,7 @@ class Sim extends Component{
     </div>
 
 </div>
-                         
+
             </div>
     );
   };
