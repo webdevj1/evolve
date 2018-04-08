@@ -165,7 +165,7 @@ class Sim extends Component{
     }
 
     render(){
-        const {champs, items, pick, pickName, counter, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
+        const {champsData, champs, items, pick, pickName, counter, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
         let hide = !pickName?'none':'';
         
         let pickImage = !pickName? `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")` : `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pickName}_0.jpg')`;
@@ -191,17 +191,15 @@ class Sim extends Component{
                         <div className="goodWith">
                         <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName ? "Click to reveal a champion counter":"" }</div>
                             <div id="pick" className="info">    
-                                {pickName? <p className="pickname">{pickName}</p> : ''}
+                                {pickName? <p className="pickname">{champsData[pickName].name}</p> : ''}
                             </div>
                         </div>
-                        {/*{ {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked 
+                        {pickItems.length > 0 ? <p className="itemname">Suggested Item Build </p> : ''}
                         {pickItems.map((item, key)=>{
+                            console.log(item)
                             if(!isNaN(Number(item)))
                             { //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
-       
-                                        <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item}/>
-                                     
                                     <div className='items_container' >
                                         <div className='popup'>
                                             <span className="popuptext" id={item}>
@@ -211,7 +209,7 @@ class Sim extends Component{
                                     </div>
                                 )
                             }
-                        })} */}
+                        })} 
                     </div>
                     <div id="champs">   
                         {champs.map((champ, key)=>(
@@ -221,10 +219,10 @@ class Sim extends Component{
                     <div style={{backgroundImage: counterImage}} className="choices">
                         <div className="counter">
                         <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName? !pickName ? "Counter Pick":"" : ''}</div>
-                           {counterName? <p className="counterpick">{counterName}</p> : "" }
+                           {counterName? <p className="counterpick">{champsData[counterName].name}</p> : "" }
                         </div>
-                        {/* {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} */}
-                        {/* {counterItems.map(item=>{
+                        {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
+                        {counterItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
                                     <div className='items_container' >
@@ -253,11 +251,10 @@ class Sim extends Component{
                 </div>
                
                     
-                    <div id="champs2">   
-                    
+                    <div id="champs2">     
                         <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
 
-                        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+                      <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
 
                         </a>
 
@@ -266,58 +263,90 @@ class Sim extends Component{
                         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
 
                         </a>
-        
-                   
                 </div>
-                    
+    
+                <br/>
 
-                            <br/>
-                            <div className="container-fluid">
-                                <div className="row">
-                                    <div className="col-sm-6 col-sm-offset-3">
-                                        <form onSubmit={this.handleSubmit}>
-                                        <div className="form-group">
-                                                <input
-                                                onChange={this.handleChange} 
-                                                value={this.state.title}
-                                                type="text" 
-                                                name="title" 
-                                                className="form-control no-border" 
-                                                placeholder="TITLE of EVOLVE Player Note..."
-                                                required
-                                                />
-                                            </div>
-                                            <div className="form-group">
-                                                <textarea 
-                                                onChange={this.handleChange}
-                                                value={this.state.body}
-                                                type="text" 
-                                                name="body" 
-                                                className="form-control no-border" 
-                                                placeholder="What did you learn so far for your next match..."
-                                                required
-                                                />
-                                            </div>
+<div className="container-fluid">
 
-                                            <div className="form-group">
-                                                <button className="btn btn-primary col-sm-12">
-                                                    save
-                                                </button>
-                                                <button>Create Profile</button>
+    <div className="row">
 
-                                            </div>
+        <div className="col-sm-6 col-sm-offset-3">
 
-                                        </form>
-                                        <div className="notes">
-                                        {this.renderNotes()}
+            <form onSubmit={this.handleSubmit}>
 
-                                        </div>
-                                    </div>
+            <div className="form-group">
 
-                                    <br/>
-                                </div>
+                    <input
 
-                            </div>
+                    onChange={this.handleChange} 
+
+                    value={this.state.title}
+
+                    type="text" 
+
+                    name="title" 
+
+                    className="form-control no-border" 
+
+                    placeholder="TITLE of EVOLVE Player Note..."
+
+                    required
+
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <textarea 
+
+                    onChange={this.handleChange}
+
+                    value={this.state.body}
+
+                    type="text" 
+
+                    name="body" 
+
+                    className="form-control no-border" 
+
+                    placeholder="What did you learn so far for your next match..."
+
+                    required
+
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <button className="btn btn-primary col-sm-12">
+
+                        save
+
+                    </button>
+
+                    <button>Create Profile</button>
+
+                </div>
+
+            </form>
+
+            <div className="notes">
+
+            {this.renderNotes()}
+
+            </div>
+
+        </div>
+
+        <br/>
+
+    </div>
+
+</div>
+                         
             </div>
     );
   };

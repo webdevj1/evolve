@@ -22,6 +22,7 @@
 }
 
 .champs1{
+    margin-top: 10px;
     border-radius:15px;
     width: 700px;
     height:200px;
@@ -69,7 +70,7 @@
 
 .choose {
     padding: 10px;
-    width: 70px;
+    width: 90px;
 }
 
 .choose:hover {
@@ -94,7 +95,7 @@
     text-align: center;
     font-family: 'Friz Quadrata Bold';
     letter-spacing: 1px;
-    margin-top: -51px;
+    margin-top: -55px;
     margin-left:29px;
 }
 
@@ -103,20 +104,17 @@
     text-align: center;
     font-family: 'Friz Quadrata Bold';
     letter-spacing: 1px;
-    margin-top: -51px;
+    margin-top: -55px;
     margin-left:29px;
     
 }
 
-/* .itemname {
-    text-shadow: 1px 1px 2px rgb(24, 95, 209), 0 0 1em rgb(8, 79, 194), 0 0 0.2em rgb(17, 130, 175);
-    text-align: center;
-    font-family: 'Berkshire Swash', cursive;
-    letter-spacing:1px;
-    border:1px rgb(13, 43, 39) groove;
-    border-width: 10px 60px ;
-    background-color:rgb(14, 2, 0);
-} */
+.itemname {
+    margin-top: 404px;
+    margin-left: 13px;
+    width: 269px;
+    margin-right: 14px;
+}
 
 .test {
     display: none;
@@ -143,8 +141,14 @@
 }
 
 .items {
-    width: 40px;
-    height: 40px;
+    width: 43px;
+    height: 43px;
+    padding: 2px;
+    border: 2px groove rgb(32, 54, 63);
+}
+
+.items:hover {
+    box-shadow: 1px 2px 20px 15px rgba(5, 133, 120, 0.79), 0 0 100px 20px;
 }
 
 .popup {
@@ -265,6 +269,7 @@ p {
     height: 100px;
     float: left;
     margin-top: 30px;
+    margin-left:17px;
 }
 
 h2 {
@@ -337,6 +342,7 @@ p {
 .morecounters {
     margin-left: 592px;
     margin-bottom: 40px;
+    margin-top: 70px;
 }
 
 @font-face {
@@ -417,3 +423,43 @@ p {
     border-radius: 15px;
     margin-top: 20px;
 }    
+
+
+.container { 
+    width: 200px;
+    height: 260px;
+    position: relative;
+    perspective: 800px;
+  }
+
+  #card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+
+  #card figure {
+    margin: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  #card .front {
+    background: red;
+  }
+  #card .back {
+    background: blue;
+    transform: rotateY( 180deg );
+  }
+  #card.flipped {
+    transform: rotateY( 180deg );
+  }
+
+.savebutton {
+    margin-left: 170px;
+}
