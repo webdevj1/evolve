@@ -85,6 +85,7 @@ class Sim extends Component{
     handleClick = e =>{
         const {champsData} = this.state;
         let alt = e.target.alt; //champ's name
+        
         this.setState({
             pick: e.target.src, //changing the empty square with the champ user clicked
             pickName: alt, //renders the clicked champ's name under the picture
@@ -142,6 +143,7 @@ class Sim extends Component{
         })
         
       }
+
       //render usernotes from database
       renderNotes(){
                 //_lodash.map(collection, callbackfunction(note, key))
@@ -162,6 +164,16 @@ class Sim extends Component{
         let popup = document.getElementById(key);
         popup.innerHTML = `${items[key].name} <br/> <br/> ${items[key].description}`;
         popup.classList.toggle('show');
+    }
+
+    handleFlip = e =>{
+        let flip = e.target.classList;
+        flip.toggle('flip-vertical-right');
+        e.target.style.backgroundImage = `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")`;
+        let all = document.querySelectorAll('.items_container');
+        all.forEach(el=>{
+            el.style.display = 'inline';
+        })
     }
 
     render(){
@@ -187,21 +199,17 @@ class Sim extends Component{
           
       
                 <div id="simulator">
-                    <div style={{backgroundImage: pickImage}} className="choices">
+                    <div onClick={this.handleFlip} style={{backgroundImage: pickImage}} className={["choices"].join(' ')}>
                         <div className="goodWith">
                         <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName ? "Click to reveal a champion counter":"" }</div>
                             <div id="pick" className="info">    
                                 {pickName? <p className="pickname">{champsData[pickName].name}</p> : ''}
                             </div>
                         </div>
-                        {/*{ {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked 
+                        {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked*/}
                         {pickItems.map((item, key)=>{
-                            if(!isNaN(Number(item)))
-                            { //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
+                            if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
-       
-                                        <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item}/>
-                                     
                                     <div className='items_container' >
                                         <div className='popup'>
                                             <span className="popuptext" id={item}>
@@ -211,7 +219,7 @@ class Sim extends Component{
                                     </div>
                                 )
                             }
-                        })} */}
+                        })}
                     </div>
                     <div id="champs">   
                         {champs.map((champ, key)=>(
@@ -253,11 +261,10 @@ class Sim extends Component{
                 </div>
                
                     
-                    <div id="champs2">   
-                    
+                    <div id="champs2">     
                         <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
 
-                        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+                      <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
 
                         </a>
 
@@ -266,10 +273,7 @@ class Sim extends Component{
                         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
 
                         </a>
-        
-                   
                 </div>
-                    
 
                             <br/>
                             <div className="container-fluid">
@@ -308,7 +312,7 @@ class Sim extends Component{
 
                                         </form>
                                         <div className="notes">
-                                        {this.renderNotes()}
+                                            {this.renderNotes()}
 
                                         </div>
                                     </div>
