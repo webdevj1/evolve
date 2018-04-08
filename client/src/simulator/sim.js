@@ -206,7 +206,7 @@ class Sim extends Component{
                                 {pickName? <p className="pickname">{champsData[pickName].name}</p> : ''}
                             </div>
                         </div>
-                        {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked*/}
+                        {pickItems.length > 0 ? <p className="itemname">Suggested Item Build </p> : ''}
                         {pickItems.map((item, key)=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
@@ -219,7 +219,7 @@ class Sim extends Component{
                                     </div>
                                 )
                             }
-                        })}
+                        })} 
                     </div>
                     <div id="champs">   
                         {champs.map((champ, key)=>(
@@ -231,8 +231,8 @@ class Sim extends Component{
                         <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName? !pickName ? "Counter Pick":"" : ''}</div>
                            {counterName? <p className="counterpick">{champsData[counterName].name}</p> : "" }
                         </div>
-                        {/* {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} */}
-                        {/* {counterItems.map(item=>{
+                        {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
+                        {counterItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
                                     <div className='items_container' >
@@ -274,53 +274,87 @@ class Sim extends Component{
 
                         </a>
                 </div>
+                <br/>
 
-                            <br/>
-                            <div className="container-fluid">
-                                <div className="row">
-                                    <div className="col-sm-6 col-sm-offset-3">
-                                        <form onSubmit={this.handleSubmit}>
-                                        <div className="form-group">
-                                                <input
-                                                onChange={this.handleChange} 
-                                                value={this.state.title}
-                                                type="text" 
-                                                name="title" 
-                                                className="form-control no-border" 
-                                                placeholder="TITLE of EVOLVE Player Note..."
-                                                required
-                                                />
-                                            </div>
-                                            <div className="form-group">
-                                                <textarea 
-                                                onChange={this.handleChange}
-                                                value={this.state.body}
-                                                type="text" 
-                                                name="body" 
-                                                className="form-control no-border" 
-                                                placeholder="What did you learn so far for your next match..."
-                                                required
-                                                />
-                                            </div>
+<div className="container-fluid">
 
-                                            <div className="form-group">
-                                                <button className="btn btn-primary col-sm-12">
-                                                    save
-                                                </button>
+    <div className="row">
 
-                                            </div>
+        <div className="col-sm-6 col-sm-offset-3">
 
-                                        </form>
-                                        <div className="notes">
-                                            {this.renderNotes()}
+            <form onSubmit={this.handleSubmit}>
 
-                                        </div>
-                                    </div>
+            <div className="form-group">
 
-                                    <br/>
-                                </div>
+                    <input
 
-                            </div>
+                    onChange={this.handleChange} 
+
+                    value={this.state.title}
+
+                    type="text" 
+
+                    name="title" 
+
+                    className="form-control no-border" 
+
+                    placeholder="TITLE of EVOLVE Player Note..."
+
+                    required
+
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <textarea 
+
+                    onChange={this.handleChange}
+
+                    value={this.state.body}
+
+                    type="text" 
+
+                    name="body" 
+
+                    className="form-control no-border" 
+
+                    placeholder="What did you learn so far for your next match..."
+
+                    required
+
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <button className="btn btn-primary col-sm-12">
+
+                        save
+
+                    </button>
+
+                    <button>Create Profile</button>
+
+                </div>
+
+            </form>
+
+            <div className="notes">
+
+            {this.renderNotes()}
+
+            </div>
+
+        </div>
+
+        <br/>
+
+    </div>
+
+</div>
             </div>
     );
   };
