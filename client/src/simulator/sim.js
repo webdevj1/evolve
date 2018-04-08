@@ -208,6 +208,7 @@ class Sim extends Component{
                         </div>
                         {pickItems.length > 0 ? <p className="itemname">Suggested Item Build </p> : ''}
                         {pickItems.map((item, key)=>{
+
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
                                     <div className='items_container' >
@@ -274,6 +275,7 @@ class Sim extends Component{
 
                         </a>
                 </div>
+
                 <br/>
 
 <div className="container-fluid">
@@ -355,6 +357,7 @@ class Sim extends Component{
     </div>
 
 </div>
+
             </div>
     );
   };
