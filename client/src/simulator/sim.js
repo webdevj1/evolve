@@ -196,6 +196,7 @@ class Sim extends Component{
                         </div>
                         {pickItems.length > 0 ? <p className="itemname">Suggested Item Build </p> : ''}
                         {pickItems.map((item, key)=>{
+                            console.log(item)
                             if(!isNaN(Number(item)))
                             { //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
@@ -264,7 +265,87 @@ class Sim extends Component{
                         </a>
                 </div>
     
+                <br/>
 
+<div className="container-fluid">
+
+    <div className="row">
+
+        <div className="col-sm-6 col-sm-offset-3">
+
+            <form onSubmit={this.handleSubmit}>
+
+            <div className="form-group">
+
+                    <input
+
+                    onChange={this.handleChange} 
+
+                    value={this.state.title}
+
+                    type="text" 
+
+                    name="title" 
+
+                    className="form-control no-border" 
+
+                    placeholder="TITLE of EVOLVE Player Note..."
+
+                    required
+
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <textarea 
+
+                    onChange={this.handleChange}
+
+                    value={this.state.body}
+
+                    type="text" 
+
+                    name="body" 
+
+                    className="form-control no-border" 
+
+                    placeholder="What did you learn so far for your next match..."
+
+                    required
+
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <button className="btn btn-primary col-sm-12">
+
+                        save
+
+                    </button>
+
+                    <button>Create Profile</button>
+
+                </div>
+
+            </form>
+
+            <div className="notes">
+
+            {this.renderNotes()}
+
+            </div>
+
+        </div>
+
+        <br/>
+
+    </div>
+
+</div>
                          
             </div>
     );
