@@ -166,15 +166,15 @@ class Sim extends Component{
         popup.classList.toggle('show');
     }
 
-    handleFlip = e =>{
-        let flip = e.target.classList;
-        flip.toggle('flip-vertical-right');
-        e.target.style.backgroundImage = `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")`;
-        let all = document.querySelectorAll('.items_container');
-        all.forEach(el=>{
-            el.style.display = 'inline';
-        })
-    }
+    // handleFlip = e =>{
+    //     let flip = e.target.classList;
+    //     flip.toggle('flip-vertical-right');
+    //     e.target.style.backgroundImage = `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")`;
+    //     let all = document.querySelectorAll('.items_container');
+    //     all.forEach(el=>{
+    //         el.style.display = 'inline';
+    //     })
+    // }
 
     render(){
         const {champsData, champs, items, pick, pickName, counter, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
@@ -199,7 +199,7 @@ class Sim extends Component{
           
       
                 <div id="simulator">
-                    <div onClick={this.handleFlip} style={{backgroundImage: pickImage}} className={["choices"].join(' ')}>
+                    <div style={{backgroundImage: pickImage}} className={["choices"].join(' ')}>
                         <div className="goodWith">
                         <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName ? "Click to reveal a champion counter":"" }</div>
                             <div id="pick" className="info">    
