@@ -172,9 +172,10 @@ class Sim extends Component{
         let counterImage = !counterName? `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")` : `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${counterName}_0.jpg')`;
         return(
             <div>
-
-                <input onChange={this.handleInput} className="summonername" placeholder="Search for a champion"/>
+               
+                <input onChange={this.handleInput} className="summonername  "  placeholder=" Search for a champion"/>
                 <br/>
+                <i class="fab fa-searchengin"></i>
                 <br/>
                 <div className="allroles">
                     <img onClick={this.handleRoles} name="all" className='roles' src={allChamps} alt="all" />
@@ -220,7 +221,7 @@ class Sim extends Component{
                         <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName? !pickName ? "Counter Pick":"" : ''}</div>
                            {counterName? <p className="counterpick">{champsData[counterName].name}</p> : "" }
                         </div>
-                        {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
+                        {counterItems.length > 0 ? <p className="itemname">Strongest Items</p> : ''}
                         {counterItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
@@ -260,7 +261,6 @@ class Sim extends Component{
                         <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
 
                         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
-
                         </a>
                 </div>
     
@@ -272,3 +272,4 @@ class Sim extends Component{
 };
 
 export default Sim;
+
