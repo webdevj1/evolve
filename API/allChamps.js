@@ -690,7 +690,7 @@ module.exports = {
                     'lane': 'mid'
                 },
                 {
-                    "champion": "Vel'Koz",
+                    "champion": "Velkoz",
                     'win': '38.43%',
                     'lane': 'mid'
                 },
@@ -830,7 +830,7 @@ module.exports = {
                     'role': 'support'
                 },
                 {
-                    "champion": 'Rakin',
+                    "champion": 'Rakan',
                     'win': '46.96%',
                     'role': 'support'
                 },
@@ -1479,7 +1479,7 @@ module.exports = {
                 'win': '45.18%'
             },
             {
-                "champion": "Vel'Koz",
+                "champion": "Velkoz",
                 'win': '45.45%'
             },
             {
@@ -1545,11 +1545,11 @@ module.exports = {
                 'win': '44.72%'
             },
             {
-                "champion": 'Miss Fortune',
+                "champion": 'MissFortune',
                 'win': '45.67%'
             },
             {
-                "champion": "Kog'Maw",
+                "champion": "KogMaw",
                 'win': '46.73%'
             },
             {
@@ -2112,7 +2112,7 @@ module.exports = {
                 'win': '48.06%'
             },
             {
-                "champion": "LeBlanc",
+                "champion": "Leblanc",
                 'win': '48.29%'
             },
             {
@@ -4693,7 +4693,7 @@ module.exports = {
                     'win': '45.59%'
                 },
                 {
-                    "champion": "Zilen",
+                    "champion": "Zilean",
                     'win': '46.22%'
                 },
                 {
@@ -8458,7 +8458,7 @@ module.exports = {
                 'win': '47.43%'
             },
             {
-                "champion": "Kog'Maw",
+                "champion": "KogMaw",
                 'win': '48.72%'
             },
             {
@@ -8806,7 +8806,7 @@ module.exports = {
                 'win': '38.51%'
             },
             {
-                "champion": "Vel'Koz",
+                "champion": "Velkoz",
                 'win': '40.39%'
             },
             {
@@ -9578,7 +9578,7 @@ module.exports = {
                 'win': '43.33%'
             },
             {
-                "champion": "Vel'Koz",
+                "champion": "Velkoz",
                 'win': '43.51%'
             },
             {
