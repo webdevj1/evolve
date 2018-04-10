@@ -7,7 +7,7 @@ import jungle from "../images/Roles/Jungle_icon.png"
 import allChamps from "../images/Roles/Fill_Icon.png"
 import support from "../images/Roles/Support_Icon.png"
 import {database} from "../firebase.js"
-import _ from 'lodash'
+import _ from 'lodash';
 
 
 class Sim extends Component{
@@ -85,6 +85,7 @@ class Sim extends Component{
     handleClick = e =>{
         const {champsData} = this.state;
         let alt = e.target.alt; //champ's name
+        
         this.setState({
             pick: e.target.src, //changing the empty square with the champ user clicked
             pickName: alt, //renders the clicked champ's name under the picture
@@ -142,6 +143,7 @@ class Sim extends Component{
         })
         
       }
+
       //render usernotes from database
       renderNotes(){
                 //_lodash.map(collection, callbackfunction(note, key))
@@ -164,8 +166,18 @@ class Sim extends Component{
         popup.classList.toggle('show');
     }
 
+    // handleFlip = e =>{
+    //     let flip = e.target.classList;
+    //     flip.toggle('flip-vertical-right');
+    //     e.target.style.backgroundImage = `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")`;
+    //     let all = document.querySelectorAll('.items_container');
+    //     all.forEach(el=>{
+    //         el.style.display = 'inline';
+    //     })
+    // }
+
     render(){
-        const {champs, items, pick, pickName, counter, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
+        const {champsData, champs, items, pick, pickName, counter, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
         let hide = !pickName?'none':'';
         
         let pickImage = !pickName? `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")` : `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pickName}_0.jpg')`;
@@ -187,21 +199,18 @@ class Sim extends Component{
           
       
                 <div id="simulator">
-                    <div style={{backgroundImage: pickImage}} className="choices">
+                    <div style={{backgroundImage: pickImage}} className={["choices"].join(' ')}>
                         <div className="goodWith">
                         <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName ? "Click to reveal a champion counter":"" }</div>
                             <div id="pick" className="info">    
-                                {pickName? <p className="pickname">{pickName}</p> : ''}
+                                {pickName? <p className="pickname">{champsData[pickName].name}</p> : ''}
                             </div>
                         </div>
-                        {/*{ {pickItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} {/* Conditional to check if any champ was clicked 
+                        {pickItems.length > 0 ? <p className="itemname">Suggested Item Build </p> : ''}
                         {pickItems.map((item, key)=>{
-                            if(!isNaN(Number(item)))
-                            { //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
+
+                            if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
-       
-                                        <img className='items' onMouseOver={this.it} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item}/>
-                                     
                                     <div className='items_container' >
                                         <div className='popup'>
                                             <span className="popuptext" id={item}>
@@ -211,7 +220,7 @@ class Sim extends Component{
                                     </div>
                                 )
                             }
-                        })} */}
+                        })} 
                     </div>
                     <div id="champs">   
                         {champs.map((champ, key)=>(
@@ -221,10 +230,10 @@ class Sim extends Component{
                     <div style={{backgroundImage: counterImage}} className="choices">
                         <div className="counter">
                         <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName? !pickName ? "Counter Pick":"" : ''}</div>
-                           {counterName? <p className="counterpick">{counterName}</p> : "" }
+                           {counterName? <p className="counterpick">{champsData[counterName].name}</p> : "" }
                         </div>
-                        {/* {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''} */}
-                        {/* {counterItems.map(item=>{
+                        {counterItems.length > 0 ? <p className="itemname">Suggested Item Build</p> : ''}
+                        {counterItems.map(item=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
                                     <div className='items_container' >
@@ -243,7 +252,7 @@ class Sim extends Component{
                 <div style={{display: hide}} id="art_container">                   
                         {counters.slice(1).map(champ=>(
                             <div className="more_counters">
-                                <p>{champ.champion}</p>
+                                <p>{champsData[champ.champion].name}</p>
                                 <div style={{backgroundImage: `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.champion}_0.jpg')`}} className="more_choices grow">
                                     
                                     
@@ -253,11 +262,10 @@ class Sim extends Component{
                 </div>
                
                     
-                    <div id="champs2">   
-                    
+                    <div id="champs2">     
                         <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
 
-                        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+                      <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
 
                         </a>
 
@@ -266,58 +274,90 @@ class Sim extends Component{
                         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
 
                         </a>
-        
-                   
                 </div>
-                    
 
-                            <br/>
-                            <div className="container-fluid">
-                                <div className="row">
-                                    <div className="col-sm-6 col-sm-offset-3">
-                                        <form onSubmit={this.handleSubmit}>
-                                        <div className="form-group">
-                                                <input
-                                                onChange={this.handleChange} 
-                                                value={this.state.title}
-                                                type="text" 
-                                                name="title" 
-                                                className="form-control no-border" 
-                                                placeholder="TITLE of EVOLVE Player Note..."
-                                                required
-                                                />
-                                            </div>
-                                            <div className="form-group">
-                                                <textarea 
-                                                onChange={this.handleChange}
-                                                value={this.state.body}
-                                                type="text" 
-                                                name="body" 
-                                                className="form-control no-border" 
-                                                placeholder="What did you learn so far for your next match..."
-                                                required
-                                                />
-                                            </div>
+                <br/>
 
-                                            <div className="form-group">
-                                                <button className="btn btn-primary col-sm-12">
-                                                    save
-                                                </button>
-                                                <button>Create Profile</button>
+<div className="container-fluid">
 
-                                            </div>
+    <div className="row">
 
-                                        </form>
-                                        <div className="notes">
-                                        {this.renderNotes()}
+        <div className="col-sm-6 col-sm-offset-3">
 
-                                        </div>
-                                    </div>
+            <form onSubmit={this.handleSubmit}>
 
-                                    <br/>
-                                </div>
+            <div className="form-group">
 
-                            </div>
+                    <input
+
+                    onChange={this.handleChange} 
+
+                    value={this.state.title}
+
+                    type="text" 
+
+                    name="title" 
+
+                    className="form-control no-border" 
+
+                    placeholder="TITLE of EVOLVE Player Note..."
+
+                    required
+
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <textarea 
+
+                    onChange={this.handleChange}
+
+                    value={this.state.body}
+
+                    type="text" 
+
+                    name="body" 
+
+                    className="form-control no-border" 
+
+                    placeholder="What did you learn so far for your next match..."
+
+                    required
+
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <button className="btn btn-primary col-sm-12">
+
+                        save
+
+                    </button>
+
+                    <button>Create Profile</button>
+
+                </div>
+
+            </form>
+
+            <div className="notes">
+
+            {this.renderNotes()}
+
+            </div>
+
+        </div>
+
+        <br/>
+
+    </div>
+
+</div>
+
             </div>
     );
   };
