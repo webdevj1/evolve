@@ -166,16 +166,6 @@ class Sim extends Component{
         popup.classList.toggle('show');
     }
 
-    // handleFlip = e =>{
-    //     let flip = e.target.classList;
-    //     flip.toggle('flip-vertical-right');
-    //     e.target.style.backgroundImage = `url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png")`;
-    //     let all = document.querySelectorAll('.items_container');
-    //     all.forEach(el=>{
-    //         el.style.display = 'inline';
-    //     })
-    // }
-
     render(){
         const {champsData, champs, items, pick, pickName, counter, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
         let hide = !pickName?'none':'';
@@ -199,7 +189,7 @@ class Sim extends Component{
           
       
                 <div id="simulator">
-                    <div style={{backgroundImage: pickImage}} className={["choices"].join(' ')}>
+                    <div style={{backgroundImage: pickImage}} id="choice1" className={["choices"].join(' ')}>
                         <div className="goodWith">
                         <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName ? "Click to reveal a champion counter":"" }</div>
                             <div id="pick" className="info">    
@@ -227,7 +217,7 @@ class Sim extends Component{
                             <img onClick={this.handleClick} className="choose grow" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
                         ))}       
                     </div>
-                    <div style={{backgroundImage: counterImage}} className="choices">
+                    <div style={{backgroundImage: counterImage}} id="choice2" className="choices">
                         <div className="counter">
                         <div style={{border: pickName? 'none': ''}} className="enemypick">{!pickName? !pickName ? "Counter Pick":"" : ''}</div>
                            {counterName? <p className="counterpick">{champsData[counterName].name}</p> : "" }

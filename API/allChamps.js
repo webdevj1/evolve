@@ -3581,7 +3581,7 @@ module.exports = {
                     'win': '45.15%'
                 },
                 {
-                    "champion": 'VelKoz',
+                    "champion": 'Velkoz',
                     'win': '45.37%'
             }],
             "image": {
@@ -6292,7 +6292,7 @@ module.exports = {
                 'win': '41.18%'
             },
             {
-                "champion": "Kai'Sa",
+                "champion": "Kaisa",
                 'win': '43.70%'
             },
             {
@@ -7142,7 +7142,7 @@ module.exports = {
                 'win': '48.04%'
             },
             {
-                "champion": "Kai'Sa",
+                "champion": "Kaisa",
                 'win': '48.20%'
         }],
             "image": {
@@ -7973,7 +7973,7 @@ module.exports = {
                 'win': '45.92%'
             },
             {
-                "champion": "Kai'Sa",
+                "champion": "Kaisa",
                 'win': '45.99%'
             },
             {
@@ -8462,7 +8462,7 @@ module.exports = {
                 'win': '48.72%'
             },
             {
-                "champion": "Kai'Sa",
+                "champion": "Kaisa",
                 'win': '49.35%'
             },
             {
@@ -8532,7 +8532,7 @@ module.exports = {
                 'win': '45.34%'
             },
             {
-                "champion": "Kai'Sa",
+                "champion": "Kaisa",
                 'win': '46.37%'
             },
             {
@@ -9446,7 +9446,7 @@ module.exports = {
                 'win': '44.78%'
             },
             {
-                "champion": "Kai'Sa",
+                "champion": "Kaisa",
                 'win': '45.09%'
         }],
             "image": {
