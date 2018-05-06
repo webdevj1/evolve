@@ -60,7 +60,7 @@ class Sim extends Component{
     //lifeCycle
   componentDidMount() {
    
-        axios.get('http://localhost:8000')
+        axios.get('https://obscure-thicket-24605.herokuapp.com/')
         .then(res => {
             this.setState({
                 champsData: res.data.data, // Importing the champ data
@@ -95,7 +95,7 @@ class Sim extends Component{
         
         });
 
-        axios.get('http://localhost:8000/itemsbuild')
+        axios.get('https://obscure-thicket-24605.herokuapp.com/itemsbuild')
         .then(res=>{
             res.data.map(build=>{
                 let items = build.hashes.finalitemshashfixed.highestWinrate.hash.replace(/-/g, ' ').split(' '); // gets all the items to complete build
@@ -117,7 +117,7 @@ class Sim extends Component{
     handleRoles = e => {
         let lanes = e.target.name; //getting the name of the lanes for the lanes images
         axios
-        .get('http://localhost:8000/roles') //getting list of champs according to lanes
+        .get('https://obscure-thicket-24605.herokuapp.com/roles') //getting list of champs according to lanes
         .then(res => {
             this.setState({
             champs: res.data[lanes] // filters the champs available according to the lanes clicked on
@@ -129,7 +129,7 @@ class Sim extends Component{
         let name = e.target.value
         const {champs} = this.state;
         axios
-        .get('http://localhost:8000/roles') //getting list of champs according to lanes
+        .get('https://obscure-thicket-24605.herokuapp.com/roles') //getting list of champs according to lanes
         .then(res => {
             let champions = res.data.all
             let newChamps = champions.filter(champ=>{
