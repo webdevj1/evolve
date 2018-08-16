@@ -33,54 +33,55 @@ class Sim extends Component{
         this.handleSubmit= this.handleSubmit.bind(this);
         this.renderNotes = this.renderNotes.bind(this);
     }
-    // handle chang for usernotes
-    handleChange(e){
-        this.setState({
-            [e.target.name]: e.target.value
-            
-        })
-        console.log(e.target.value)
-    }
 
-    // handle submit
-    handleSubmit(e){
-        e.preventDefault()
-        console.log('submit clicked');
-        const note ={
-            title:this.state.title,
-            body:this.state.body
-        }
-        database.push(note);
-        this.setState({
-            title:'',
-            body:''
-            
-        })
-    }
-    //lifeCycle
-  componentDidMount() {
-   
+    //Load Champions, Items, & Notes after the component has been rendered
+    componentDidMount() {
         axios.get('http://localhost:8000')
         .then(res => {
             this.setState({
-                champsData: res.data.data, // Importing the champ data
-                champs: Object.keys(res.data.data) //Grabs the champs names for their images
+                champsData: res.data.data, // Importing the champ data.
+                champs: Object.keys(res.data.data) //Grabs the names of the champs to be later used for their images.
             });
         })
         .catch(err => console.log(err));
 
+        //Function to check the firebase database for the rendered notes.
         database.on('value', snapshot =>{
-            //go to database listen on value and get snapshot of data
             this.setState({notes: snapshot.val()});
-            });
-            
-    axios.get('http://localhost:8000/items')
-    .then(res =>{
-        this.setState({
-            items: res.data.data
+            //Store all, if any, notes to state.
         });
-    });
-  }
+        
+        //Getting all of the items to show along with the champions.
+        axios.get('http://localhost:8000/items')
+        .then(res =>{
+            this.setState({items: res.data.data});
+        });
+    }
+
+    //Handles the current input for new user note.
+    handleChange(e){
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    //Handles the submission of a new user note.
+    handleSubmit(e){
+        e.preventDefault();
+
+        console.log('submit clicked');
+        //Storing the note in state.
+        const note ={
+            title:this.state.title,
+            body:this.state.body
+        };
+        //Adding the new note to the firebase database.
+        database.push(note);
+        
+        //Clearing the current input field
+        this.setState({
+            title:'',
+            body:''
+        });
+    };
 
     handleClick = e =>{
         const {champsData} = this.state;
