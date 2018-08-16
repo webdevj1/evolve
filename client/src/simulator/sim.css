@@ -4,6 +4,14 @@
     
 }
 
+#choice1{
+    order: 0
+}
+
+#choice2{
+    order: 2
+}
+
 
 #champs {
     margin-right:5px;
@@ -12,7 +20,7 @@
     width: 700px;
     height:400px;
     overflow: auto;
-    order: 0;
+    order: 1;
     justify-content: center;
     -moz-box-shadow: 0 0 5px #cb8;
     -webkit-box-shadow: 0 0 5px #cb8;
@@ -422,6 +430,7 @@ p {
     margin-left: 24px;
     border-radius: 15px;
     margin-top: 20px;
+    background-image: url(https://img.fireden.net/v/image/1515/22/1515228346527.gif);
 }    
 
 

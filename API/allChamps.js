@@ -3581,7 +3581,7 @@ module.exports = {
                     'win': '45.15%'
                 },
                 {
-                    "champion": 'VelKoz',
+                    "champion": 'Velkoz',
                     'win': '45.37%'
             }],
             "image": {
