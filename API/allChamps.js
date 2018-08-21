@@ -6932,7 +6932,7 @@ module.exports = {
                 'win': '46.11%'
             },
             {
-                "champion": "KhaZix",
+                "champion": "Khazix",
                 'win': '47.26%'
         }],
             "image": {

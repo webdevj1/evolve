@@ -105,7 +105,8 @@ class Sim extends Component{
         Champ's name was stored in the alt of the
         element. Storing it now in the variable "alt".
         */
-       let champName = e.target.alt; 
+        let champName = e.target.name;
+        console.log(e.target)
         
         this.setState({
             pickImage: `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champName}_0.jpg')`, //Changing the background images of the empty squares with the image of the champion selected.
@@ -117,7 +118,6 @@ class Sim extends Component{
 
         axios.get('http://localhost:8000/itemsbuild')
         .then(res=>{
-            console.log(res.data)
             res.data.forEach(build=>{
                 let items = build.hashes.finalitemshashfixed.highestWinrate.hash.replace(/-/g, ' ').split(' '); //Coverting the string containing all the item numbers into an array. Also getting rid of all dashes and spaces.
                 if(Number(champsData[champName].key) === build.championId){ //Checking to see if current item build champion id matches the selected champion.
@@ -128,35 +128,31 @@ class Sim extends Component{
                 };
             });
         })
-        .catch(err=>console.log(err));
+        .catch(err=>console.log('Something went wrong: ',err));
     }
 
     handleRoles = e => {
-        let lanes = e.target.name; //getting the name of the lanes for the lanes images
+        let lane = e.target.name; //Getting the name of the lane for the lanes images.
         axios
-        .get('http://localhost:8000/roles') //getting list of champs according to lanes
+        .get('http://localhost:8000/roles') //Getting list of champs according to lanes.
         .then(res => {
             this.setState({
-            champs: res.data[lanes] // filters the champs available according to the lanes clicked on
+            champs: res.data[lane] //Filters the champs available according to the lane clicked on.
             });
         })
     };
 
-    
-
-      //render usernotes from database
-      renderNotes(){
-                //_lodash.map(collection, callbackfunction(note, key))
+    //Renders the user notes stored in state from the database.
+    renderNotes(){
         return _.map(this.state.notes, (note, key)=>{
-                return(
-                    
-                    <div key={key} className="champs1" > 
-                        <h3>{note.title}</h3>
-                        <p>{note.body}</p>
-                    </div>
-                )
+            return(        
+                <div key={key} className="champs1"> 
+                    <h3>{note.title}</h3>
+                    <p>{note.body}</p>
+                </div>
+            )
         });
-      }
+    };
 
     handleItems = (e) =>{
         const {items} = this.state;
@@ -179,10 +175,8 @@ class Sim extends Component{
     render(){
         const {champsData, champs, pickImage, pickName, counterImage, counters, counterName, pickItems, counterItems, userInputChamp} = this.state;
         let hide = !pickName?'none':'';
-        
         return(
             <div>
-
                 <input onChange={this.handleInput} className="summonername" placeholder="Search for a champion"/> {/* Input field at the top of the page that allows you to search for a specific champion. */}
                 <br/>
                 <br/>
@@ -226,7 +220,7 @@ class Sim extends Component{
                     </div>
                     <div id="champs">   
                         {champs.map((champ, key)=>(
-                            <img onClick={this.handleClick} className="choose grow" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} alt={champ} key={key} />
+                            <img onClick={this.handleClick} className="choose grow" src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/champion/${champ}.png`} name={champ} key={key} />
                         ))}       
                     </div>
                     <div style={{backgroundImage: counterImage}} className="choices">
@@ -252,113 +246,69 @@ class Sim extends Component{
                 </div>
                 <p className="morecounters" style={{display: hide}}>Additional Counters</p>
                 <div style={{display: hide}} id="art_container">                   
-                        {counters.slice(1).map(champ=>(
-                            <div className="more_counters">
+                        {counters.slice(1).map((champ, key)=>(
+                            <div key={key} className="more_counters">
                                 <p>{champsData[champ.champion].name}</p>
-                                <div style={{backgroundImage: `url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.champion}_0.jpg')`}} className="more_choices grow">
-                                </div>
+                                <img
+                                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.champion}_0.jpg`}
+                                className="more_choices grow"
+                                onClick={this.handleClick}
+                                name={champ.champion} />
                             </div>
                         ))}        
                 </div>
                
                     
-                    <div id="champs2">     
-                        <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
-
-                      <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
-
-                        </a>
-
-                        <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
-
+                <div id="champs2">     
+                    <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
+                        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+                    </a>
+                    <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
                         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
-
-                        </a>
+                    </a>
                 </div>
                 <br/>
-
-<div className="container-fluid">
-
-    <div className="row">
-
-        <div className="col-sm-6 col-sm-offset-3">
-
-            <form onSubmit={this.handleSubmit}>
-
-            <div className="form-group">
-
-                    <input
-
-                    onChange={this.handleChange} 
-
-                    value={this.state.title}
-
-                    type="text" 
-
-                    name="title" 
-
-                    className="form-control no-border" 
-
-                    placeholder="TITLE of EVOLVE Player Note..."
-
-                    required
-
-                    />
-
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-sm-6 col-sm-offset-3">
+                            <form onSubmit={this.handleSubmit}>
+                                <div className="form-group">
+                                    <input
+                                    onChange={this.handleChange} 
+                                    value={this.state.title}
+                                    type="text" 
+                                    name="title" 
+                                    className="form-control no-border" 
+                                    placeholder="TITLE of EVOLVE Player Note..."
+                                    required
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <textarea 
+                                    onChange={this.handleChange}
+                                    value={this.state.body}
+                                    type="text" 
+                                    name="body" 
+                                    className="form-control no-border" 
+                                    placeholder="What did you learn so far for your next match..."
+                                    required
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <button className="btn btn-primary col-sm-12">Save</button>
+                                    <button>Create Profile</button>
+                                </div>
+                            </form>
+                            <div className="notes">
+                                {this.renderNotes()}
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
                 </div>
-
-                <div className="form-group">
-
-                    <textarea 
-
-                    onChange={this.handleChange}
-
-                    value={this.state.body}
-
-                    type="text" 
-
-                    name="body" 
-
-                    className="form-control no-border" 
-
-                    placeholder="What did you learn so far for your next match..."
-
-                    required
-
-                    />
-
-                </div>
-
-                <div className="form-group">
-
-                    <button className="btn btn-primary col-sm-12">
-
-                        save
-
-                    </button>
-
-                    <button>Create Profile</button>
-
-                </div>
-
-            </form>
-
-            <div className="notes">
-
-            {this.renderNotes()}
-
             </div>
-
-        </div>
-
-        <br/>
-
-    </div>
-
-</div>
-            </div>
-    );
-  };
+        );
+    };
 };
 
 export default Sim;
