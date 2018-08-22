@@ -62,7 +62,7 @@ class Sim extends Component{
     handleInput = e =>{
         let name = e.target.value
         
-        axios.get('http://localhost:8000/roles') //Getting list of champion names
+        axios.get('http://localhost:8000/lanes') //Getting list of champion names
         .then(res => {
             let champions = res.data.all
             let newChamps = champions.filter(champ=>{
@@ -134,7 +134,7 @@ class Sim extends Component{
     handleRoles = e => {
         let lane = e.target.name; //Getting the name of the lane for the lanes images.
         axios
-        .get('http://localhost:8000/roles') //Getting list of champs according to lanes.
+        .get('http://localhost:8000/lanes') //Getting list of champs according to lanes.
         .then(res => {
             this.setState({
             champs: res.data[lane] //Filters the champs available according to the lane clicked on.
@@ -156,11 +156,12 @@ class Sim extends Component{
 
     handleItems = (e) =>{
         const {items} = this.state;
-        let key = e.target.alt
-        let popup = document.getElementById(key);
-        popup.innerHTML = `${items[key].name} <br/> <br/> ${items[key].description}`;
+        let key = e.target.alt; /* Targeting the alt property that holds the item id/key. */
+        let popup = e.target.previousSibling; /* Targeting the span element that holds the popup. */
+        popup.innerHTML = `${items[key].name} <br/> <br/> ${items[key].description}`; /*  */
         popup.classList.toggle('show');
     }
+    
 
     // handleFlip = e =>{
     //     let flip = e.target.classList;
@@ -188,8 +189,7 @@ class Sim extends Component{
                     <img onClick={this.handleRoles} name="bot" className='roles' src={bottom} alt="bot"/>
                     <img onClick={this.handleRoles} name="jungle" className='roles' src={jungle} alt="jungle"/> {" "}
                 </div>
-          
-      
+
                 <div id="simulator">
                     <div style={{backgroundImage: pickImage}} className={"choices"}>
                         <div className="pick">
@@ -207,9 +207,10 @@ class Sim extends Component{
                                 Just making sure to ignore it and just focus on the actual item numbers
                                 */
                                 return(
-                                    <div className='items_container' >
+                                    <div key={key} className='items_container' >
                                         <div className='popup'>
-                                            <span className="popuptext" id={item}>
+                                            <span className="popuptext">
+                                                
                                             </span>
                                             <img onMouseOver={this.handleItems} onMouseOut={this.handleItems} className={'items'} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
                                         </div>
@@ -229,12 +230,12 @@ class Sim extends Component{
                            {counterName? <p className="counterpick">{champsData[counterName].name}</p> : "" }
                         </div>
                         {counterItems.length > 0 ? <p className="item-title">Suggested Item Build</p> : ''}
-                        {counterItems.map(item=>{
+                        {counterItems.map((item, key)=>{
                             if(!isNaN(Number(item))){ //items list includes the word item... Just making sure to ignore it and just focus on the actual item numbers
                                 return(
-                                    <div className='items_container' >
+                                    <div key={key} className='items_container' >
                                         <div className='popup'>
-                                            <span className="popuptext" id={item}>
+                                            <span className="popuptext">
                                             </span>
                                             <img onMouseOver={this.handleItems} onMouseOut={this.handleItems} className={'items'} src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
                                         </div>
@@ -244,6 +245,7 @@ class Sim extends Component{
                         })}
                     </div>
                 </div>
+
                 <p className="morecounters" style={{display: hide}}>Additional Counters</p>
                 <div style={{display: hide}} id="art_container">                   
                         {counters.slice(1).map((champ, key)=>(
@@ -267,7 +269,9 @@ class Sim extends Component{
                         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
                     </a>
                 </div>
+
                 <br/>
+
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-6 col-sm-offset-3">

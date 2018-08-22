@@ -7273,7 +7273,7 @@ module.exports = {
                 'win': '48.47%'
             },
             {
-                "champion": "Savir",
+                "champion": "Sivir",
                 'win': '48.81%'
             },
             {
@@ -7969,7 +7969,7 @@ module.exports = {
                 'win': '44.67%'
             },
             {
-                "champion": "Savir",
+                "champion": "Sivir",
                 'win': '45.92%'
             },
             {
