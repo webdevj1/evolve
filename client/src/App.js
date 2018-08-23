@@ -4,12 +4,10 @@ import './App.css';
 import Sim from './simulator/sim.js';
 import './simulator/sim.css';
 import evolve from "./images/Evolve.png";
-import MoreInfo from './champInfo/champInfo.js';
 
 
 
 class App extends Component {
-  
   render() {
     return (
       <div>
@@ -17,7 +15,6 @@ class App extends Component {
 
         <Switch>
           <Route exact path='/' component={Sim} />
-          <Route path='/champions'  component={MoreInfo} />
         </Switch>
       </div>
     );
