@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import './sim.css';
+import './responsive-sim.css';
 import axios from 'axios';
 import top from "../images/Roles/Top_icon.png"
 import mid from "../images/Roles/Mid_icon.png"
