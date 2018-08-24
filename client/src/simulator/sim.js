@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import './sim.css';
 import './responsive-sim.css';
 import axios from 'axios';
+import evolve from '../images/Evolve.png';
 import top from "../images/Roles/Top_icon.png"
 import mid from "../images/Roles/Mid_icon.png"
 import bottom from "../images/Roles/Bottom_icon.png"
@@ -164,10 +166,12 @@ class Sim extends Component{
         let hide = !pickName?'none':'';
         return(
             <div className="sim-container">
-                <input onChange={this.handleInput} className="champion-search" placeholder="Search for a champion"/> {/* Input field at the top of the page that allows you to search for a specific champion. */}
-                <br/>
-                <br/>
-                <div className="allroles">
+                <div className="logo-search">
+                    <Link to="/"><img alt="EVOLVE" src={evolve} className="Logo"/></Link>
+                    <input onChange={this.handleInput} className="champion-search" placeholder="Search for a champion"/> {/* Input field at the top of the page that allows you to search for a specific champion. */}
+                </div>
+
+                <div className="all-lanes">
                     <img onClick={this.handleRoles} name="all" className='lanes' src={allChamps} alt="all" />
                     <img onClick={this.handleRoles} name="top" className='lanes' src={top} alt="top"/>
                     <img onClick={this.handleRoles} name="mid" className='lanes' src={mid} alt="mid"/>       {/*  All of the lanes available  */}

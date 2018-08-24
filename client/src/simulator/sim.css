@@ -13,14 +13,29 @@
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
-}  
+}
+
+.sim-container{
+
+}
+
+.logo-search{
+    display: flex;
+    flex-direction: column;
+
+}
+.Logo{
+    width: 30%;
+    height: auto;
+    margin: 0 auto;
+    padding-bottom: 1%;
+}
 
 .champion-search {
     text-align: center;
     width: 50vw;
     height: 40px;
-    margin-top: 100px;
-    margin-right: 280px;
+    margin: 0 auto;
     background-image: url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
     box-shadow: 0px 0px 5px #cb8;
     border-radius: 15px;
@@ -28,8 +43,7 @@
     font-size: 25px;
     font-weight: 100%;
     font-family: 'Friz Quadrata Bold', sans-serif;
-    margin-bottom: 29px;
-    letter-spacing: 1px;
+    
 }
 
 .champion-search:hover {
@@ -40,12 +54,20 @@
     color: black;
 }
 
+.all-lanes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1%
+}
+
 .lanes {
     width: 50px;
     height: 50px;
     background-color: black;
     opacity: 0.9;
     border-radius: 25px;
+
 }
 
 .lanes:hover {
@@ -61,7 +83,7 @@
 }
 
 .choices {
-    width: 300px;
+    width: 25%;
     height: 400px;
     order: 0;
     box-shadow: 0px 0px 5px #cb8;
@@ -69,18 +91,19 @@
     background-size: 100% 100%;
 }
 
+
+
 .champion {
-    width: 240px;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 1%;
     font-size: 20px;
     font-family: 'Friz Quadrata Bold', sans-serif;
     letter-spacing: 1px;
     border: 2px groove black;
     color: white;
     background-color: rgb(32, 54, 63);
-    margin-bottom: 0px;
-    margin-left: 24px;
     border-radius: 15px;
-    margin-top: 20px;
     background-image: url(https://img.fireden.net/v/image/1515/22/1515228346527.gif);
 }  
 
@@ -164,7 +187,7 @@
     margin-right:5px;
     margin-left:5px;
     border-radius: 15px;
-    width: 700px;
+    width: 50%;
     height:400px;
     overflow: auto;
     justify-content: center;

@@ -10,7 +10,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Link to="/"><img alt="EVOLVE" src={evolve} className="Logo"/></Link>
 
         <Switch>
           <Route exact path='/' component={Sim} />

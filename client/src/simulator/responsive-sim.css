@@ -1,21 +1,15 @@
-@media screen and (max-width: 800px){
-    .champion-search{
-        text-align: center;
-        width: 20vw;
-        height: 4vh;
-        margin-top: 100px;
-        margin-right: 280px;
-        background-image: url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
-        box-shadow: 0px 0px 5px #cb8;
-        border-radius: 15px;
-        color: white;
-        font-size: 25px;
-        font-weight: 100%;
-        font-family: 'Friz Quadrata Bold', sans-serif;
-        margin-bottom: 29px;
-        letter-spacing: 1px;
+@media only screen and (max-width: 500px){
+    .logo-search{
+        flex-direction: column;
     }
-    .Logo{
-        display: none
+    .champs{
+        width: 20%
+    }
+    .choices{
+        width: 80%
+    }
+    .lanes{
+        width: 2em;
+        height: 2em;
     }
 }
