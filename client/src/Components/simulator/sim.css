@@ -1,7 +1,7 @@
 /*IMPORT*/
 @font-face {
     font-family: "Friz Quadrata Bold";
-    src: url("../Font/Friz-Quadrata-Bold.otf") format("opentype")
+    src: url("../../Font/Friz-Quadrata-Bold.otf") format("opentype")
 }
 
 /* Add animation (fade in the popup) */
@@ -16,7 +16,8 @@
 }
 
 .sim-container{
-
+    display: flex;
+    flex-direction: column;
 }
 
 .logo-search{
@@ -89,6 +90,7 @@
     box-shadow: 0px 0px 5px #cb8;
     border-radius: 15px;
     background-size: 100% 100%;
+    position: relative;
 }
 
 
@@ -116,14 +118,16 @@
     margin-left:29px;
 }
 
-.item-title {
-    margin-top: 404px;
-    margin-left: 13px;
-    width: 269px;
-    margin-right: 14px;
+.items-container{
+    position: absolute;
+    top: 101%;
 }
 
-.items_container{
+.item-title {
+    
+}
+
+.item-icons{
     display: inline;
 }
 
@@ -132,6 +136,7 @@
     height: 43px;
     padding: 2px;
     border: 2px groove rgb(32, 54, 63);
+    border-radius: 25%
 }
 
 .items:hover {
@@ -219,9 +224,8 @@
 }
 
 .morecounters {
-    margin-left: 592px;
-    margin-bottom: 40px;
-    margin-top: 70px;
+    margin: 0 auto;
+    padding: 3%;
 }
 
 .more_counters {
@@ -255,26 +259,23 @@
     cursor: pointer;
 }
 
+.notes{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .champs1{
-    margin-top: 10px;
+    margin-bottom: 5%;
     border-radius:15px;
-    width: 700px;
-    height:200px;
     overflow: scroll;
-    order: 0;
-    justify-content:center;
     -moz-box-shadow: 0 0 5px #cb8;
     -webkit-box-shadow: 0 0 5px #cb8;
     box-shadow: 0px 0px 5px #cb8;
     background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
 }
 
-.notes{
-    justify-content:center;
-}
-.champs1 p{
-    width: 100%;
-}
+
 
 .champs1 h3{
     color: white;
@@ -308,15 +309,12 @@ h3 {
 }
 
 p {
-    width: 240px;
     font-size: 20px;
     font-family: 'Friz Quadrata Bold', sans-serif;
     letter-spacing: 1px;
     border: 2px groove black;
     color: white;
     background-color: rgb(32, 54, 63);
-    margin-bottom: 0px;
-    margin-left: 4px;
     border-radius: 15px;
     text-shadow: 1px 1px 2px rgb(32, 54, 63), 0 0 1em rgb(67, 61, 7), 0 0 0.2em rgb(63, 58, 5);
 }

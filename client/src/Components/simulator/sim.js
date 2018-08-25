@@ -3,14 +3,14 @@ import {Link} from 'react-router-dom';
 import './sim.css';
 import './responsive-sim.css';
 import axios from 'axios';
-import evolve from '../images/Evolve.png';
-import top from "../images/Roles/Top_icon.png"
-import mid from "../images/Roles/Mid_icon.png"
-import bottom from "../images/Roles/Bottom_icon.png"
-import jungle from "../images/Roles/Jungle_icon.png"
-import allChamps from "../images/Roles/Fill_Icon.png"
-import support from "../images/Roles/Support_Icon.png"
-import {database} from "../firebase.js"
+import evolve from '../../images/Evolve.png';
+import top from "../../images/Roles/Top_icon.png"
+import mid from "../../images/Roles/Mid_icon.png"
+import bottom from "../../images/Roles/Bottom_icon.png"
+import jungle from "../../images/Roles/Jungle_icon.png"
+import allChamps from "../../images/Roles/Fill_Icon.png"
+import support from "../../images/Roles/Support_Icon.png"
+import {database} from "../../firebase.js"
 import _ from 'lodash';
 
 
@@ -189,17 +189,19 @@ class Sim extends Component{
                                 {/* Shows to selected champion's name. */}
                             </div>
                         </div>
-                        {pickItems.length ? <p className="item-title">Suggested Item Build </p> : ''}
-                        {pickItems.filter(item=>Number(item)).map((item, key)=>( /*Grabbing just the items numbers so they can be rendered.*/
-                            <div key={key} className='items_container' >
-                                <div className='popup'>
-                                    <span className="popuptext">
-                                        
-                                    </span>
-                                    <img onMouseOver={this.handleItems} onMouseOut={this.handleItems} className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                        <div className="items-container" >
+                            {pickItems.length ? <p className="item-title">Suggested Item Build </p> : ''}
+                            {pickItems.filter(item=>Number(item)).map((item, key)=>( /*Grabbing just the items numbers so they can be rendered.*/
+                                <div key={key} className='item-icons' >
+                                    <div className='popup'>
+                                        <span className="popuptext">
+                                            
+                                        </span>
+                                        <img onMouseOver={this.handleItems} onMouseOut={this.handleItems} className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                    </div>
                                 </div>
-                            </div>
-                        ))} 
+                            ))} 
+                        </div>
                     </div>
                     <div id="champs">   
                         {champs.map((champ, key)=>(
@@ -217,32 +219,35 @@ class Sim extends Component{
                             <div style={{border: pickName? 'none': ''}} className="champion">{!pickName ? "Counter Pick":""}</div>
                            {counterName ? <p className="counterpick">{champsData[counterName].name}</p> : "" }
                         </div>
-                        {counterItems.length ? <p className="item-title">Suggested Item Build</p> : ""}
-                        {counterItems.filter(item=>Number(item)).map((item, key)=>(
-                            <div key={key} className='items_container' >
-                                <div className='popup'>
-                                    <span className="popuptext">
-                                    </span>
-                                    <img onMouseOver={this.handleItems} onMouseOut={this.handleItems} className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                        <div className="items-container" >
+                            {counterItems.length ? <p className="item-title">Suggested Item Build</p> : ""}
+                            {counterItems.filter(item=>Number(item)).map((item, key)=>(
+                                <div key={key} className='item-icons' >
+                                    <div className='popup'>
+                                        <span className="popuptext">
+                                        </span>
+                                        <img onMouseOver={this.handleItems} onMouseOut={this.handleItems} className='items' src={`http://ddragon.leagueoflegends.com/cdn/8.6.1/img/item/${item}.png`} alt={item} />
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
-
-                <p className="morecounters" style={{display: hide}}>Additional Counters</p>
+                <div className="morecounters">
+                    <p style={{display: hide}}>Additional Counters</p>
+                </div>
                 <div style={{display: hide}} id="art_container">                   
-                        {counters.slice(1).map((champ, key)=>(
-                            <div key={key} className="more_counters">
-                                <p>{champsData[champ.champion].name}</p>
-                                <img
-                                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.champion}_0.jpg`}
-                                className="more_choices grow"
-                                onClick={this.handleClick}
-                                name={champ.champion} 
-                                alt={key}/>
-                            </div>
-                        ))}        
+                    {counters.slice(1).map((champ, key)=>(
+                        <div key={key} className="more_counters">
+                            <p>{champsData[champ.champion].name}</p>
+                            <img
+                            src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.champion}_0.jpg`}
+                            className="more_choices grow"
+                            onClick={this.handleClick}
+                            name={champ.champion} 
+                            alt={key}/>
+                        </div>
+                    ))}        
                 </div>
                
                     
@@ -254,47 +259,7 @@ class Sim extends Component{
                         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
                     </a>
                 </div>
-
                 <br/>
-
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-sm-6 col-sm-offset-3">
-                            <form onSubmit={this.handleSubmit}>
-                                <div className="form-group">
-                                    <input
-                                    onChange={this.handleChange} 
-                                    value={this.state.title}
-                                    type="text" 
-                                    name="title" 
-                                    className="form-control no-border" 
-                                    placeholder="TITLE of EVOLVE Player Note..."
-                                    required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <textarea 
-                                    onChange={this.handleChange}
-                                    value={this.state.body}
-                                    type="text" 
-                                    name="body" 
-                                    className="form-control no-border" 
-                                    placeholder="What did you learn so far for your next match..."
-                                    required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <button className="btn btn-primary col-sm-12">Save</button>
-                                    <button>Create Profile</button>
-                                </div>
-                            </form>
-                            <div className="notes">
-                                {this.renderNotes()}
-                            </div>
-                        </div>
-                        <br/>
-                    </div>
-                </div>
             </div>
         );
     };

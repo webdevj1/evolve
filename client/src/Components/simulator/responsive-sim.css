@@ -6,10 +6,13 @@
         width: 20%
     }
     .choices{
-        width: 80%
+        width: 40%
     }
     .lanes{
         width: 2em;
         height: 2em;
+    }
+    .morecounters{
+        padding-top: 65%
     }
 }

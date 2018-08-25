@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import {Link, Route, Switch} from 'react-router-dom';
 import './App.css';
-import Sim from './simulator/sim.js';
-import evolve from "./images/Evolve.png";
+import Sim from './Components/simulator/sim.js';
+import Notes from './Components/notes/notes';
 
 
 
@@ -10,10 +9,8 @@ class App extends Component {
   render() {
     return (
       <div>
-
-        <Switch>
-          <Route exact path='/' component={Sim} />
-        </Switch>
+        <Sim />
+        <Notes />
       </div>
     );
   }
