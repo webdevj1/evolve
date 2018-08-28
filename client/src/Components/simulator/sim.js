@@ -4,14 +4,14 @@ import './sim.css';
 import './responsive-sim.css';
 import axios from 'axios';
 import evolve from '../../images/Evolve.png';
-import top from "../../images/Roles/Top_icon.png"
-import mid from "../../images/Roles/Mid_icon.png"
-import bottom from "../../images/Roles/Bottom_icon.png"
-import jungle from "../../images/Roles/Jungle_icon.png"
-import allChamps from "../../images/Roles/Fill_Icon.png"
-import support from "../../images/Roles/Support_Icon.png"
-import {database} from "../../firebase.js"
-import _ from 'lodash';
+import top from "../../images/Roles/Top_icon.png";
+import mid from "../../images/Roles/Mid_icon.png";
+import bottom from "../../images/Roles/Bottom_icon.png";
+import jungle from "../../images/Roles/Jungle_icon.png";
+import allChamps from "../../images/Roles/Fill_Icon.png";
+import support from "../../images/Roles/Support_Icon.png";
+import {database} from "../../firebase.js";
+
 
 
 class Sim extends Component{
@@ -32,10 +32,6 @@ class Sim extends Component{
             body: '',
             notes: ''
         };
-        //bind handler 
-        this.handleChange= this.handleChange.bind(this);
-        this.handleSubmit= this.handleSubmit.bind(this);
-        this.renderNotes = this.renderNotes.bind(this);
     }
 
     /* Load Champions, Items, & Notes after the component has been rendered */
@@ -76,29 +72,6 @@ class Sim extends Component{
         })
     }
 
-    /* Handles the current input for adding a note. */
-    handleChange = (e) => { this.setState({ [e.target.name]: e.target.value })};
-
-    /* Handles the submission of adding a new note to the database */
-    handleSubmit(e){
-        e.preventDefault();
-        
-        const note = {
-            title: this.state.title,
-            body: this.state.body
-        };
-
-        /* database.push() is the function used to add to the firebase database. */
-        database.push(note);
-
-        /* Clears the current input fields after submission. */
-        this.setState({
-            title:'',
-            body:''    
-        });
-    }
-
-
     handleClick = e =>{
         const {champsData} = this.state;
         /* 
@@ -132,25 +105,12 @@ class Sim extends Component{
 
     handleRoles = e => {
         let lane = e.target.name; //Getting the name of the lane for the lanes images.
-        axios
-        .get('http://localhost:8000/lanes') //Getting list of champs according to lanes.
+        axios.get('http://localhost:8000/lanes') //Getting list of champs according to lanes.
         .then(res => {
             this.setState({
-            champs: res.data[lane] //Filters the champs available according to the lane clicked on.
+                champs: res.data[lane] //Filters the champs available according to the lane clicked on.
             });
         })
-    };
-
-    //Renders the user notes stored in state from the database.
-    renderNotes(){
-        return _.map(this.state.notes, (note, key)=>{
-            return(        
-                <div key={key} className="champs1"> 
-                    <h3>{note.title}</h3>
-                    <p>{note.body}</p>
-                </div>
-            )
-        });
     };
 
     handleItems = (e) =>{
@@ -251,7 +211,7 @@ class Sim extends Component{
                 </div>
                
                     
-                <div id="champs2">     
+                <div id="share-buttons">     
                     <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank" rel="noopener noreferrer">
                         <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
                     </a>
