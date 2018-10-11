@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Sim from './Components/simulator/sim.js';
+import Sim from './Components/simulator/sim';
 import Notes from './Components/notes/notes';
 
 
