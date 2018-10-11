@@ -64,7 +64,7 @@ class Sim extends Component{
         
         axios.get('https://evolve-lol-backend.herokuapp.com/lanes') //Getting list of champion names
         .then(res => {
-            let champions = res.data.all
+            let champions = res.data.all;
             let newChamps = champions.filter(champ=>champ.toLowerCase().startsWith(name.toLowerCase()));
             if(newChamps.length !== 0){
                 this.setState({champs: newChamps})
