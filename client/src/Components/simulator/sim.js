@@ -36,7 +36,7 @@ class Sim extends Component{
 
     /* Load Champions, Items, & Notes after the component has been rendered */
     componentDidMount() {
-        axios.get('http://localhost:8000')
+        axios.get('https://evolve-lol-backend.herokuapp.com')
         .then(res => {
             this.setState({
                 champsData: res.data.data, // Importing the champ data.
@@ -52,7 +52,7 @@ class Sim extends Component{
         });
         
         /* Getting all of the items to show along with the champions. */
-        axios.get('http://localhost:8000/items')
+        axios.get('https://evolve-lol-backend.herokuapp.com/items')
         .then(res =>{
             this.setState({items: res.data.data});
         });
@@ -62,7 +62,7 @@ class Sim extends Component{
     handleInput = e =>{
         let name = e.target.value
         
-        axios.get('http://localhost:8000/lanes') //Getting list of champion names
+        axios.get('https://evolve-lol-backend.herokuapp.com/lanes') //Getting list of champion names
         .then(res => {
             let champions = res.data.all
             let newChamps = champions.filter(champ=>champ.toLowerCase().startsWith(name.toLowerCase()));
@@ -88,7 +88,7 @@ class Sim extends Component{
             counterName: champsData[champName].counters[0].champion, //Grabbing the name of the top counter and storing it in state.
         });
 
-        axios.get('http://localhost:8000/itemsbuild')
+        axios.get('https://evolve-lol-backend.herokuapp.com/itemsbuild')
         .then(res=>{
             res.data.forEach(build=>{
                 let items = build.hashes.finalitemshashfixed.highestWinrate.hash.replace(/-/g, ' ').split(' '); //Coverting the string containing all the item numbers into an array. Also getting rid of all dashes and spaces.
@@ -105,7 +105,7 @@ class Sim extends Component{
 
     handleRoles = e => {
         let lane = e.target.name; //Getting the name of the lane for the lanes images.
-        axios.get('http://localhost:8000/lanes') //Getting list of champs according to lanes.
+        axios.get('https://evolve-lol-backend.herokuapp.com/lanes') //Getting list of champs according to lanes.
         .then(res => {
             this.setState({
                 champs: res.data[lane] //Filters the champs available according to the lane clicked on.
