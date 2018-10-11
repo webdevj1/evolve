@@ -67,7 +67,7 @@ class Sim extends Component{
             let champions = res.data.all;
             let newChamps = champions.filter(champ=>champ.toLowerCase().startsWith(name.toLowerCase()));
             if(newChamps.length !== 0){
-                this.setState({champs: newChamps})
+                this.setState({champs: newChamps});
             }
         })
     }
