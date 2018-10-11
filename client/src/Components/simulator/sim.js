@@ -194,7 +194,7 @@ class Sim extends Component{
                     </div>
                 </div>
                 <div className="morecounters">
-                    <p style={{display: hide}}>Additional Counters</p>
+                    <p style={{display: hide}}>JOHNNNNNNNNNNNNNNN</p>
                 </div>
                 <div style={{display: hide}} id="art_container">                   
                     {counters.slice(1).map((champ, key)=>(
