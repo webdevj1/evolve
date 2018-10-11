@@ -38,7 +38,6 @@ class Sim extends Component{
     componentDidMount() {
         axios.get('https://evolve-lol-backend.herokuapp.com')
         .then(res => {
-            console.log('DONE')
             this.setState({
                 champsData: res.data.data, // Importing the champ data.
                 champs: Object.keys(res.data.data) //Grabs the names of the champs to be later used for their images.
@@ -55,7 +54,6 @@ class Sim extends Component{
         /* Getting all of the items to show along with the champions. */
         axios.get('https://evolve-lol-backend.herokuapp.com/items')
         .then(res =>{
-            console.log('DONE')
             this.setState({items: res.data.data});
         });
     }
@@ -66,7 +64,6 @@ class Sim extends Component{
         
         axios.get('https://evolve-lol-backend.herokuapp.com/lanes') //Getting list of champion names
         .then(res => {
-            console.log('DONE')
             let champions = res.data.all
             let newChamps = champions.filter(champ=>champ.toLowerCase().startsWith(name.toLowerCase()));
             if(newChamps.length !== 0){
@@ -93,7 +90,6 @@ class Sim extends Component{
 
         axios.get('https://evolve-lol-backend.herokuapp.com/itemsbuild')
         .then(res=>{
-            console.log('DONE')
             res.data.forEach(build=>{
                 let items = build.hashes.finalitemshashfixed.highestWinrate.hash.replace(/-/g, ' ').split(' '); //Coverting the string containing all the item numbers into an array. Also getting rid of all dashes and spaces.
                 if(Number(champsData[champName].key) === build.championId){ //Checking to see if current item build champion id matches the selected champion.
@@ -111,7 +107,6 @@ class Sim extends Component{
         let lane = e.target.name; //Getting the name of the lane for the lanes images.
         axios.get('https://evolve-lol-backend.herokuapp.com/lanes') //Getting list of champs according to lanes.
         .then(res => {
-            console.log('DONE')
             this.setState({
                 champs: res.data[lane] //Filters the champs available according to the lane clicked on.
             });
