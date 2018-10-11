@@ -9,13 +9,12 @@ const user_profiles = require('../API/profileIcons.js');
 const itemBuild = require('../API/itemBuild.js');
 
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.json(allChamps)
+  res.json(allChamps);
 });
 
 router.get('/champID', function(req, res, next) {
-  res.json(champID)
+  res.json(champID);
 });
 
 router.get('/lanes', function(req, res, next) {
@@ -23,20 +22,20 @@ router.get('/lanes', function(req, res, next) {
 });
 
 router.get('/items', function(req, res, next) {
-  res.json(items)
+  res.json(items);
 });
 
 router.get('/itemsbuild', function(req, res, next) {
-  res.json(itemBuild)
+  res.json(itemBuild);
 });
 
 router.get('/maps', function(req, res, next) {
-  res.json(maps)
+  res.json(maps);
 });
 
 
 router.get('/profiles', function(req, res, next) {
-  res.json(user_profiles)
+  res.json(user_profiles);
 });
 
 
