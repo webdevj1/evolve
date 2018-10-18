@@ -84,7 +84,7 @@
 }
 
 .choices {
-    width: 25%;
+    width: 20%;
     height: 400px;
     order: 0;
     box-shadow: 0px 0px 5px #cb8;
@@ -114,7 +114,7 @@
     text-align: center;
     font-family: 'Friz Quadrata Bold';
     letter-spacing: 1px;
-    margin-top: -55px;
+    margin-top: -40px;
     margin-left:29px;
 }
 
@@ -123,9 +123,7 @@
     top: 101%;
 }
 
-.item-title {
-    
-}
+
 
 .item-icons{
     display: inline;
@@ -165,7 +163,6 @@
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    left: 50%;
     margin-left: -80px;
 }
 
@@ -189,8 +186,8 @@
 }
 
 #champs {
-    margin-right:5px;
-    margin-left:5px;
+    margin-right: 19px;
+    margin-left: 15px;
     border-radius: 15px;
     width: 50%;
     height:400px;
@@ -219,7 +216,7 @@
     text-align: center;
     font-family: 'Friz Quadrata Bold';
     letter-spacing: 1px;
-    margin-top: -55px;
+    margin-top: -40px;
     margin-left:29px;
 }
 
@@ -259,34 +256,6 @@
     cursor: pointer;
 }
 
-.notes{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.champs1{
-    margin-bottom: 5%;
-    border-radius:15px;
-    overflow: scroll;
-    -moz-box-shadow: 0 0 5px #cb8;
-    -webkit-box-shadow: 0 0 5px #cb8;
-    box-shadow: 0px 0px 5px #cb8;
-    background-image:url("http://apollo-na-uploads.s3.amazonaws.com/1427669031664/SRBackground.png");
-}
-
-
-
-.champs1 h3{
-    color: white;
-}
-
-
-
-#share-buttons{
-    padding: 5px;
-}
-
 h3 {
     font-family: 'Oswald', sans-serif;
     color: rgb(29, 49, 58);
@@ -301,4 +270,5 @@ p {
     background-color: rgb(32, 54, 63);
     border-radius: 15px;
     text-shadow: 1px 1px 2px rgb(32, 54, 63), 0 0 1em rgb(67, 61, 7), 0 0 0.2em rgb(63, 58, 5);
+    margin:2px 4px -2px;
 }
